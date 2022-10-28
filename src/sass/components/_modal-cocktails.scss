@@ -1,5 +1,63 @@
+.cocktails {
+  text-align: center;
+}
+
 .modal__title {
-  font-size: 32px;
   margin-top: 40px;
   margin-bottom: 20px;
+
+  font-size: 32px;
+}
+
+.modal__inst {
+  margin-bottom: 20px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.modal__ingr {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.modal__text {
+  display: inline-block;
+
+  margin-bottom: 32px;
+
+  width: 275px;
+  max-width: 100%;
+  font-weight: 400;
+  line-height: 28px;
+  color: #5f6775;
+}
+
+.modal__img {
+  margin-bottom: 22px;
+  display: inline-block;
+}
+
+.modal__ing {
+  margin-bottom: 8px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.modal__per-cocktail {
+  margin-bottom: 8px;
+}
+
+.modal__ingrid-text {
+  font-weight: 400;
+  line-height: 26px;
+  color: rgba(95, 103, 117, 1);
+}
+
+.modsl-star {
+  color: #000917;
 }
