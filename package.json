@@ -1,15 +1,15 @@
 {
-  "name": "parcel-project-template",
+  "name": "bc_camel-case_party-cocktails",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://Oleksandr1914/bc_camel-case_party-cocktails",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /bc_camel-case_party-cocktails/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/Oleksandr1914/bc-camel-case_party-cocktails.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
