@@ -1,6 +1,11 @@
 <section class="cocktails">
   <div class="container">
     <div class="modal">
+      <button type="button" class="modal__close" data-modal-close>
+        <svg class="modal-icon-close" width="32" Height="32">
+          <use href="../src/clarity_close-line-1.svg"></use>
+        </svg>
+      </button>
       <h1 class="modal__title">Negroni</h1>
       <ul>
         <li>
@@ -18,26 +23,27 @@
             height="280"
           />
         </li>
-        <li>
+        <li class="modal__all-ing">
           <h3 class="modal__ing">INGREDIENTS</h3>
           <p class="modal__per-cocktail">Per cocktail</p>
-          <p class="modal__ingrid-text">
+          <a href="#" class="modal__ingrid-input">
             <span class="modsl-star">✶</span> Ice
-          </p>
-          <p class="modal__ingrid-text">
+          </a>
+          <a href="#" class="modal__ingrid-input">
             <span class="modsl-star">✶</span> 1 ounce gin
-          </p>
-          <p class="modal__ingrid-text">
+          </a>
+          <a href="#" class="modal__ingrid-input">
             <span class="modsl-star">✶</span> 1 ounce Campari
-          </p>
-          <p class="modal__ingrid-text">
+          </a>
+          <a href="#" class="modal__ingrid-input">
             <span class="modsl-star">✶</span> 1 ounce sweet vermouth
-          </p>
-          <p class="modal__ingrid-text">
+          </a>
+          <a href="#" class="modal__ingrid-input">
             <span class="modsl-star">✶</span> Garnish: orange peel
-          </p>
+          </a>
         </li>
       </ul>
+      <button type="submit" class="btn">Add to favorite</button>
     </div>
   </div>
 </section>
