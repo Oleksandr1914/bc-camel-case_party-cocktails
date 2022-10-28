@@ -1,0 +1,44 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+//
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+//
+
+body {
+  font-family: $mainFont;
+  color: $lightThemeMainColor;
+  font-weight: 700;
+  background-color: $lightThemeBG;
+
+  &._lock {
+    overflow: hidden;
+  }
+}
