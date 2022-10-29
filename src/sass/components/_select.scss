@@ -1,0 +1,78 @@
+.wrap {
+  width: 93px;
+  @include tablet {
+    display: none;
+  }
+}
+
+.select {
+  width: 100%;
+  position: relative;
+  z-index: 100;
+
+  &.open {
+    .select__dropdown {
+      display: block;
+    }
+
+    .select__backdrop {
+      display: block;
+    }
+  }
+
+  &__input {
+    border: 1px solid $accentColor;
+    border-radius: 4px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.35;
+    color: $accentColor;
+  }
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    border: 1px solid $accentColor;
+    border-radius: 4px;
+    top: 34px;
+    left: 0;
+    right: 0;
+    max-height: 84px;
+    overflow-y: auto;
+  }
+
+  &__backdrop {
+    position: fixed;
+    display: none;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: transparent;
+  }
+
+  &__item {
+    font-size: 10px;
+    line-height: 1.5;
+    color: #5f6775;
+    padding: 6.5px 10px;
+    transition: background-color $mainTransition, color $mainTransition;
+
+    &.selected {
+      background-color: $accentColor;
+      color: #ffffff;
+    }
+
+    &:hover {
+      background-color: $accentColor;
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+}
