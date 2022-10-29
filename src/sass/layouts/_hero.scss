@@ -1,3 +1,7 @@
+// .hero-box {
+//   margin-top: 75px;
+// }
+
 .hero-box {
   @include tablet {
     display: flex;
@@ -10,26 +14,25 @@
   font-size: 22px;
   line-height: 1.9;
   color: $accentColor;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  margin-top: 130px;
+  margin-bottom: 60px;
   @include tablet {
     font-size: 26px;
     line-height: 42px;
-    padding-top: 100px;
+    margin-top: 170px;
   }
 }
 
 .hero-box-img {
   width: 100%;
-  padding-bottom: 60px;
+  margin-bottom: 60px;
   @include tablet {
-    padding-top: 77px;
+    margin-top: 150px;
   }
 }
 
 .hero-blok {
   @include tablet {
-    visibility: hidden;
     display: none;
   }
 }
