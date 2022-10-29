@@ -1,11 +1,11 @@
 {
-  "name": "bc_camel-case_party-cocktails",
+  "name": "bc-camel-case_party-cocktails",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Oleksandr1914/bc_camel-case_party-cocktails",
+  "homepage": "https://Oleksandr1914/bc-camel-case_party-cocktails",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /bc_camel-case_party-cocktails/"
+    "build": "parcel build src/*.html --public-url /bc-camel-case_party-cocktails/"
   },
   "repository": {
     "type": "git",
