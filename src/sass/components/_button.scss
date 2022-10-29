@@ -7,7 +7,7 @@
 
   font-family: $secondaryFont;
   font-size: 20px;
-  line-height: (24/20);
+  line-height: calc(24 / 20);
   letter-spacing: 0.02em;
 
   border-radius: 4px;
@@ -37,7 +37,7 @@
 
   font-family: $secondaryFont;
   font-size: 20px;
-  line-height: (24/20);
+  line-height: calc(24 / 20);
   letter-spacing: 0.02em;
 
   border-radius: 4px;
