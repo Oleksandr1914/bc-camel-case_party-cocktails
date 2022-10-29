@@ -57,3 +57,33 @@
   border: none;
   transition: $mainTransition;
 }
+
+/*=============================---   Modal close   ---============================*/
+
+.modal__close {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  top: 16px;
+  right: 16px;
+
+  cursor: pointer;
+  border: none;
+
+  width: 32px;
+  height: 32px;
+  background-color: $lightThemeBG;
+
+  transition: $mainTransition;
+  fill: $lightThemeMainColor;
+  transition: $mainTransition;
+}
+
+.modal__close:hover,
+.modal__close:focus {
+  fill: $accentColor;
+  transition: $mainTransition;
+}

@@ -1,22 +1,42 @@
-// .modal__close {
-//   top: 12px;
-//   right: 12px;
-//   padding: 0;
-//   cursor: pointer;
+.backdrop {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  // transition: opacity 250ms linear, visibility 250ms linear;
+}
 
-//   width: 30px;
-//   height: 30px;
-//   background-color: $accentColor;
-
-//   position: fixed;
-//   justify-content: center;
-
-//   transition: $mainTransition;
-//   fill: $darkThemeBG;
+// .backdrop.is-hidden {
+//   opacity: 0;
+//   // visibility: hidden;
+//   pointer-events: none;
 // }
 
+// .backdrop.is-hidden .modal {
+//   transform: translate(-50%, -50%) scale(0) rotate(0);
+// }
+
+.modal {
+  padding: 40px 20px;
+
+  max-width: 822px;
+  height: 956px;
+  background-color: $lightThemeBG;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  transition: transform 250ms linear;
+
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 .modal__title {
-  margin-top: 40px;
   margin-bottom: 20px;
 
   font-family: $secondaryFont;
@@ -43,13 +63,19 @@
   margin-bottom: 32px;
 
   width: 100%;
+  font-family: $mainFont;
+  font-style: normal;
   font-weight: 400;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: calc(28 / 16);
+
+  color: $searchLettersColor;
 }
 
 .modal__img {
   margin-bottom: 22px;
   display: inline-block;
+  width: 100%;
 }
 
 .modal__ing {
