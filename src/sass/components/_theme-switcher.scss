@@ -1,0 +1,47 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 40px;
+
+  &__input {
+    display: none;
+  }
+
+  &__slider {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border: 0.604701px solid $accentColor;
+    border-radius: 20px;
+    transition: background-color $mainTransition, border-color $mainTransition;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 2;
+      bottom: 2px;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background-color: $accentColor;
+      transition: transform $mainTransition, background-color $mainTransition;
+      .switch__input--header:checked + & {
+        transform: translateX(20px);
+        background-color: #ffffff;
+      }
+      .switch__input:checked + & {
+        transform: translateX(20px);
+        background-color: #ffffff;
+      }
+    }
+
+    .switch__input:checked + & {
+      border-color: #ffffff;
+      background-color: $accentColor;
+    }
+  }
+}

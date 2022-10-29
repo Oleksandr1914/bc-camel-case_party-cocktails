@@ -24,6 +24,11 @@ a {
   text-decoration: none;
 }
 
+input,
+button {
+  padding: 0;
+}
+
 img {
   display: block;
   max-width: 100%;
