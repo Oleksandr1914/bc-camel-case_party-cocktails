@@ -1,0 +1,298 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 75px;
+  transition: min-height $mainTransition, background-color $mainTransition;
+
+  &.sticky {
+    background-color: rgba(255, 255, 255, 0.882);
+    min-height: 65px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__search-form {
+    margin-bottom: 40px;
+
+    @include tablet {
+      margin-right: 48px;
+    }
+
+    @include desktop {
+      margin-right: 172px;
+    }
+  }
+
+  &__logo {
+    @include tablet {
+      margin-right: 190px;
+      position: relative;
+      z-index: 30;
+    }
+    @include desktop {
+      margin-right: 40px;
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    order: 1;
+    margin-bottom: 40px;
+
+    @include tablet {
+      gap: 12px;
+      align-self: center;
+    }
+
+    @include desktop {
+      display: none;
+    }
+
+    &--display {
+      display: none;
+      @include desktop {
+        display: flex;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__theme-mode {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.7;
+    transition: color $mainTransition;
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 1.33;
+    }
+
+    &:hover,
+    &:focus {
+      color: $accentColor;
+    }
+  }
+}
+
+// Menu -----------------------
+
+.menu {
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    order: 4;
+  }
+
+  @include desktop {
+    margin-right: 251px;
+    align-self: end;
+  }
+
+  &__icon {
+    position: relative;
+    z-index: 30;
+    display: block;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+
+    & span,
+    &::before,
+    &::after {
+      position: absolute;
+      left: 0;
+      height: 10%;
+      width: 100%;
+      background-color: $lightThemeMainColor;
+      transition: all 0.3s ease 0s;
+    }
+    &::before,
+    &::after {
+      content: '';
+    }
+    &::before {
+      top: 0;
+    }
+    &::after {
+      bottom: 0;
+    }
+    & span {
+      top: 50%;
+      transform: scale(1) translate(0px, -50%);
+    }
+
+    &._active span {
+      transform: scale(0) translate(0px, -50%);
+    }
+    &._active::before {
+      top: 50%;
+      transform: rotate(-45deg) translate(0px, -50%);
+    }
+    &._active::after {
+      bottom: 50%;
+      transform: rotate(45deg) translate(0px, 50%);
+    }
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__content {
+    padding-left: calc((100vw - 280px) / 2);
+    padding-right: calc((100vw - 280px) / 2);
+
+    @include tablet {
+      padding-left: calc((100vw - 708px) / 2);
+      padding-right: calc((100vw - 708px) / 2);
+    }
+
+    @include desktop {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @media screen and (max-width: 1280px) {
+      position: fixed;
+      min-height: 100vh;
+      min-width: 100vw;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      color: #000;
+      padding-top: 27px;
+      display: flex;
+      flex-direction: column;
+
+      overflow: auto;
+      transform: translateX(-100%);
+      transition: transform $mainTransition;
+
+      &._active {
+        transform: translateX(0%);
+      }
+    }
+  }
+  &__search-form {
+    margin-bottom: 40px;
+  }
+}
+
+// Navigation -----------------------
+
+.navigation {
+  order: 2;
+
+  @include tablet {
+    align-self: center;
+  }
+  @include desktop {
+    order: 0;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    @include desktop {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 50px;
+    }
+  }
+
+  &__item {
+    &--submenu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+  &__link {
+    position: relative;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    transition: color $mainTransition;
+
+    @include desktop {
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    &:hover,
+    &:focus {
+      color: $accentColor;
+    }
+
+    &--current {
+      color: $accentColor;
+    }
+  }
+  &__sub-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 210px;
+    transform: translateY(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    border: 1px solid $accentColor;
+    border-radius: 4px;
+    transition: opacity $mainTransition, transform $mainTransition;
+
+    .navigation__item--submenu:hover &,
+    .navigation__item--submenu:focus & {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+  }
+  &__sub-item {
+  }
+  &__submenu-icon {
+    transition: fill $mainTransition, transform $mainTransition;
+    .navigation__item--submenu:hover &,
+    .navigation__item--submenu:focus & {
+      fill: $accentColor;
+      transform: scale(1, -1);
+    }
+    @include desktop {
+      display: none;
+    }
+  }
+  &__sub-link {
+    display: block;
+    padding: 12px;
+    width: 100%;
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    transition: background-color $mainTransition, color $mainTransition;
+
+    &:hover,
+    &:focus {
+      background-color: $accentColor;
+      color: #ffffff;
+    }
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 1.33;
+    }
+  }
+}
