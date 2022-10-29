@@ -5,10 +5,12 @@
 @import './base/container';
 
 @import './components/button';
+@import './components/search-form';
+@import './components/theme-switcher';
 @import './components/modal-cocktails';
 @import './components/modal-ingredients';
 
-@import './layouts/header';
+@import './header';
 @import './layouts/hero';
 @import './layouts/main-cocktails';
 @import './layouts/footer';
