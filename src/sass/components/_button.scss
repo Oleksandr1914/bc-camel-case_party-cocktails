@@ -1,0 +1,89 @@
+/*=============================---   Button: add to favorite   ---========================*/
+
+.button__add {
+  margin-bottom: 40px;
+  padding: 12px 24px;
+  cursor: pointer;
+
+  font-family: $secondaryFont;
+  font-size: 20px;
+  line-height: calc(24 / 20);
+  letter-spacing: 0.02em;
+
+  border-radius: 4px;
+  transition: $mainTransition;
+  border: none;
+
+  color: $darkThemeMainColor;
+  background-color: #fe7031;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.button__add:hover,
+.button__add:focus {
+  color: $accentColor;
+  background-color: #f5f5f5;
+  border: none;
+  transition: $mainTransition;
+}
+
+/*===========================---   Button: remove from favorite   ---========================*/
+
+.button__remove {
+  margin-bottom: 40px;
+  padding: 12px 24px;
+  cursor: pointer;
+
+  font-family: $secondaryFont;
+  font-size: 20px;
+  line-height: calc(24 / 20);
+  letter-spacing: 0.02em;
+
+  border-radius: 4px;
+  transition: $mainTransition;
+  border: none;
+
+  color: $darkThemeMainColor;
+  background-color: #fe7031;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.button__remove:hover,
+.button__remove:focus {
+  color: $accentColor;
+  background-color: #f5f5f5;
+  border: none;
+  transition: $mainTransition;
+}
+
+/*=============================---   Modal close   ---============================*/
+
+.modal__close {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  top: 16px;
+  right: 16px;
+
+  cursor: pointer;
+  border: none;
+
+  width: 32px;
+  height: 32px;
+  background-color: $lightThemeBG;
+
+  transition: $mainTransition;
+  fill: $lightThemeMainColor;
+  transition: $mainTransition;
+}
+
+.modal__close:hover,
+.modal__close:focus {
+  fill: $accentColor;
+  transition: $mainTransition;
+}

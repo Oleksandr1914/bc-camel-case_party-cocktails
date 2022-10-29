@@ -1,49 +1,55 @@
 <section class="cocktails">
-  <div class="container">
-    <div class="modal">
-      <button type="button" class="modal__close" data-modal-close>
-        <svg class="modal-icon-close" width="32" Height="32">
-          <use href="../src/clarity_close-line-1.svg"></use>
-        </svg>
-      </button>
-      <h1 class="modal__title">Negroni</h1>
-      <ul>
-        <li>
-          <h3 class="modal__inst">INSTRACTIONS:</h3>
+  <div class="backdrop is-hidden">
+    <div class="container">
+      <div class="modal">
+        <button type="button" class="modal__close" data-modal-close>
+          <svg class="modal-icon-close" width="32" Height="32">
+            <use href="./images/icons/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+        <div>
+          <h1 class="modal__title">Negroni</h1>
+          <h2 class="modal__inst">INSTRACTIONS:</h2>
           <p class="modal__text">
             Add the gin, Campari and sweet vermouth to a mixing glass filled
             with ice, and stir until well-chilled. Strain into a rocks glass
             filled with large ice cubes. Garnish with an orange peel.
           </p>
-          <img
-            src="../src/ACID.jpg"
-            alt="the drink"
-            class="modal__img"
-            width="280"
-            height="280"
-          />
-        </li>
-        <li class="modal__all-ing">
-          <h3 class="modal__ing">INGREDIENTS</h3>
+          <img src="../src/ACID.jpg" alt="the drink" class="modal__img" />
+          <h2 class="modal__ing">INGREDIENTS</h2>
           <p class="modal__per-cocktail">Per cocktail</p>
-          <a href="#" class="modal__ingrid-input">
-            <span class="modsl-star">✶</span> Ice
-          </a>
-          <a href="#" class="modal__ingrid-input">
-            <span class="modsl-star">✶</span> 1 ounce gin
-          </a>
-          <a href="#" class="modal__ingrid-input">
-            <span class="modsl-star">✶</span> 1 ounce Campari
-          </a>
-          <a href="#" class="modal__ingrid-input">
-            <span class="modsl-star">✶</span> 1 ounce sweet vermouth
-          </a>
-          <a href="#" class="modal__ingrid-input">
-            <span class="modsl-star">✶</span> Garnish: orange peel
-          </a>
-        </li>
-      </ul>
-      <button type="submit" class="btn">Add to favorite</button>
+        </div>
+
+        <ul class="modal__ing-all">
+          <li>
+            <a href="#" class="modal__ing-input">
+              <span class="modal-star">✶</span> Ice
+            </a>
+          </li>
+          <li>
+            <a href="#" class="modal__ing-input">
+              <span class="modal-star">✶</span> 1 ounce gin
+            </a>
+          </li>
+          <li>
+            <a href="#" class="modal__ing-input">
+              <span class="modal-star">✶</span> 1 ounce Campari
+            </a>
+          </li>
+          <li>
+            <a href="#" class="modal__ing-input">
+              <span class="modal-star">✶</span> 1 ounce sweet vermouth
+            </a>
+          </li>
+          <li>
+            <a href="#" class="modal__ing-input">
+              <span class="modal-star">✶</span> Garnish: orange peel
+            </a>
+          </li>
+        </ul>
+
+        <button type="submit" class="button__add">Add to favorite</button>
+      </div>
     </div>
   </div>
 </section>

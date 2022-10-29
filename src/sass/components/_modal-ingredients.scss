@@ -1,0 +1,82 @@
+.modal-ingredients {
+  padding: 40px 20px;
+
+  width: 320px;
+  height: 673px;
+  background-color: $lightThemeBG;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  transition: transform 250ms linear;
+
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.modal-ingredients__title {
+  margin-bottom: 20px;
+
+  font-family: $secondaryFont;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: calc(38 / 32);
+
+  color: $lightThemeMainColor;
+}
+
+.modal-ingredients__inst {
+  margin-bottom: 20px;
+
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: calc(24 / 16);
+
+  text-transform: uppercase;
+
+  color: $lightThemeMainColor;
+}
+
+.modal-ingredients__text {
+  margin-bottom: 28px;
+
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(28 / 16);
+
+  color: $searchLettersColor;
+}
+
+.modal-ingredients__campari {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: calc(28 / 16);
+
+  color: $lightThemeMainColor;
+}
+
+.modal-ingredients__ing-all {
+  margin-bottom: 32px;
+}
+
+.modal-ingredients__ing-input {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(26 / 16);
+
+  color: $searchLettersColor;
+}
+
+.modal-ingredients-star {
+  color: #000917;
+}
