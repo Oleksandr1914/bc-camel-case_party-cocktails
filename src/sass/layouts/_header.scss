@@ -260,8 +260,8 @@
       transform: translateY(0);
     }
   }
-  &__sub-item {
-  }
+  // &__sub-item {
+  // }
   &__submenu-icon {
     transition: fill $mainTransition, transform $mainTransition;
     .navigation__item--submenu:hover &,
