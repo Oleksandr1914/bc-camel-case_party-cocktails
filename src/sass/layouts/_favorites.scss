@@ -155,6 +155,7 @@
   border: 1px solid $accentColor;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color $mainTransition;
 
   &:hover,
   &:focus {
