@@ -90,12 +90,14 @@ export class Select {
 
   open() {
     this.$el.classList.add('open');
+    document.querySelector('.hero__blok').style.marginBottom = '124px';
     this.$arrow.classList.remove('fa-chevron-down');
     this.$arrow.classList.add('fa-chevron-up');
   }
 
   close() {
     this.$el.classList.remove('open');
+    document.querySelector('.hero__blok').style.marginBottom = '40px';
     this.$arrow.classList.add('fa-chevron-down');
     this.$arrow.classList.remove('fa-chevron-up');
   }
