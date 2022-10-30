@@ -1,0 +1,163 @@
+.hero__box {
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.hero__box-left {
+  margin-top: 114px;
+  margin-bottom: 60px;
+  @include tablet {
+    margin-top: 163px;
+    margin-bottom: 0;
+  }
+  @include desktop {
+    margin-top: 160px;
+  }
+}
+
+.hero__box-title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.9;
+  color: $accentColor;
+
+  @include tablet {
+    width: 336px;
+    font-size: 26px;
+    line-height: 42px;
+  }
+  @include desktop {
+    width: 688px;
+    font-size: 52px;
+    line-height: 1.53;
+  }
+}
+
+.hero__box-text {
+  display: none;
+  @include tablet {
+    margin-top: 40px;
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0.02em;
+    opacity: 0.8;
+  }
+  @include desktop {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+}
+
+.hero__box-lists {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 324px;
+  margin-top: 40px;
+  @include desktop {
+    width: 520px;
+  }
+}
+
+.hero__box-list--top,
+.hero__box-list--bottom {
+  display: none;
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+  }
+  @include desktop {
+    gap: 0;
+  }
+}
+
+.hero__box-letter,
+.hero__box-numb {
+  font-size: 14px;
+  width: 24px;
+  height: 25px;
+
+  color: #5f6775;
+  @include desktop {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
+
+.hero__box-img {
+  width: 100%;
+  @include tablet {
+    margin-top: 140px;
+    width: 336px;
+  }
+  @include desktop {
+    margin-top: 160px;
+    width: 501px;
+  }
+}
+
+.hero__blok {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  @include tablet {
+    display: none;
+  }
+}
+
+.wrap {
+  margin: 20px auto 0;
+  width: 93px;
+  @include tablet {
+    display: none;
+  }
+}
+.hero__blok-label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2;
+  color: #000000;
+  opacity: 0.8;
+}
+
+.hero__contein {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+  }
+}
+
+.hero__contain-text {
+  margin-bottom: 60px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.9;
+  @include tablet {
+    width: 331px;
+    font-family: $secondaryFont;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.31;
+  }
+  @include desktop {
+    margin-bottom: 70px;
+    width: 493px;
+    font-family: $mainFont;
+    font-size: 48px;
+    line-height: 1.5;
+  }
+}
+
+.hero__contein-img {
+  width: 100%;
+}
