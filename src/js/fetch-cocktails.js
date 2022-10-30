@@ -15,3 +15,12 @@ export function getCocktailLetter(letter) {
     return response.json();
   });
 }
+
+export function getIngName(ingName) {
+  return fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingName}`
+  ).then(response => {
+    if (!response.ok) throw new Error(response.status);
+    return response.json();
+  });
+}
