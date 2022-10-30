@@ -7,9 +7,9 @@
     width: 480px;
   }
   @include tablet {
-    padding-right: 32px;
+    width: 798px;
     padding-left: 32px;
-    width: 768px;
+    padding-right: 32px;
   }
   @include desktop {
     padding-right: 16px;
