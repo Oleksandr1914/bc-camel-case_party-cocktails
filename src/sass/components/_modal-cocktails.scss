@@ -20,22 +20,61 @@
 // }
 
 .modal {
-  padding: 40px 20px;
-
-  max-width: 822px;
-  height: 956px;
-  background-color: $lightThemeBG;
   position: absolute;
+
+  padding-top: 40px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+
+  width: 320px;
+  max-height: 100vh;
+  overflow-y: scroll;
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(360deg);
   transition: transform 250ms linear;
-
+  background-color: $lightThemeBG;
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  @include mobile {
+    width: 320px;
+
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
+
+  @include tablet {
+    padding-top: 0;
+    padding-right: 28px;
+    padding-left: 0;
+    padding-bottom: 0;
+
+    width: 822px;
+    height: 598px;
+    overflow-y: unset;
+    max-height: none;
+  }
 }
 
+.modal-order {
+  @include tablet {
+    margin-left: 28px;
+
+    order: 1;
+  }
+}
+
+.modal-flex {
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
 .modal__title {
   margin-bottom: 20px;
 
@@ -44,8 +83,28 @@
   font-weight: 900;
   font-size: 32px;
   line-height: calc(38 / 32);
-
   color: $lightThemeMainColor;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.modal__title-tablet {
+  display: none;
+
+  @include tablet {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 28px;
+
+    font-family: $secondaryFont;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: calc(38 / 32);
+    color: $lightThemeMainColor;
+  }
 }
 
 .modal__inst {
@@ -57,6 +116,10 @@
   font-size: 16px;
   line-height: calc(26 / 16);
   color: $lightThemeMainColor;
+
+  @include tablet {
+    margin-bottom: 24px;
+  }
 }
 
 .modal__text {
@@ -70,12 +133,29 @@
   line-height: calc(28 / 16);
 
   color: $searchLettersColor;
+
+  @include tablet {
+    width: 615px;
+    margin-bottom: 40px;
+  }
 }
 
 .modal__img {
   margin-bottom: 22px;
-  display: inline-block;
-  width: 100%;
+
+  width: 280px;
+
+  @include tablet {
+    margin-bottom: 28px;
+    width: 288px;
+    height: 320px;
+  }
+}
+
+.modal__block-ing {
+  @include tablet {
+    margin-left: 32px;
+  }
 }
 
 .modal__ing {
@@ -88,6 +168,9 @@
   line-height: calc(24 / 16);
 
   color: #000917;
+  @include tablet {
+    margin-bottom: 8px;
+  }
 }
 
 .modal__per-cocktail {
@@ -104,6 +187,9 @@
 
 .modal__ing-all {
   margin-bottom: 32px;
+  @include tablet {
+    margin-bottom: 0px;
+  }
 }
 
 .modal__ing-input {
@@ -124,4 +210,45 @@
 
 .modal-star {
   color: #000917;
+  font-size: 16px;
+}
+
+.modal__button-add {
+  padding: 12px 24px;
+  cursor: pointer;
+
+  font-family: $secondaryFont;
+  font-size: 20px;
+  line-height: calc(24 / 20);
+  letter-spacing: 0.02em;
+
+  border-radius: 4px;
+  transition: $mainTransition;
+  border: none;
+
+  color: $darkThemeMainColor;
+  background-color: #fe7031;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  @include tablet {
+    margin-left: auto;
+    margin-bottom: 0;
+
+    display: block;
+  }
+}
+
+.modal__button-add:hover,
+.modal__button-add:focus {
+  color: $accentColor;
+  background-color: #f5f5f5;
+  border: none;
+  transition: $mainTransition;
+}
+
+.modal__button-add:active {
+  background-color: #fd5103;
+  color: $darkThemeMainColor;
+  transition: $mainTransition;
 }
