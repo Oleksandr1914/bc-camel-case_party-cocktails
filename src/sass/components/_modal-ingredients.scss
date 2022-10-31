@@ -3,10 +3,6 @@
 
   padding: 40px 20px;
 
-  // height: 673px;
-  // width: 320px;
-  // width: 100%;
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(360deg);
@@ -23,7 +19,7 @@
   }
 
   @include tablet {
-    padding: 40px 28px 28px 28px;
+    padding: 0;
     width: 715px;
     height: 557px;
   }
@@ -40,6 +36,8 @@
 
   color: $lightThemeMainColor;
   @include tablet {
+    margin-left: 28px;
+    margin-top: 40px;
     margin-bottom: 28px;
   }
 }
@@ -56,6 +54,7 @@
   text-transform: uppercase;
   color: $lightThemeMainColor;
   @include tablet {
+    margin-left: 28px;
     margin-bottom: 40px;
   }
 }
@@ -81,6 +80,11 @@
   line-height: calc(28 / 16);
 
   color: $searchLettersColor;
+
+  @include tablet {
+    width: 654px;
+    margin-left: 28px;
+  }
 }
 
 .modal-ingredients__campari {
@@ -96,6 +100,7 @@
 .modal-ingredients__ing-all {
   margin-bottom: 32px;
   @include tablet {
+    margin-left: 28px;
     margin-bottom: 40px;
   }
 }
@@ -135,6 +140,7 @@
 
   @include tablet {
     margin-left: auto;
+    margin-right: 28px;
     margin-bottom: 0;
 
     display: block;
@@ -147,4 +153,10 @@
   background-color: #f5f5f5;
   border: none;
   transition: $mainTransition;
+}
+
+.modal-ingredients__button-add:active {
+  background-color: #fd5103;
+  transition: $mainTransition;
+  color: $darkThemeMainColor;
 }

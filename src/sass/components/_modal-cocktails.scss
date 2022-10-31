@@ -27,7 +27,9 @@
   padding-bottom: 40px;
   padding-left: 20px;
 
-  width: 100%;
+  width: 320px;
+  max-height: 100vh;
+  overflow-y: scroll;
 
   top: 50%;
   left: 50%;
@@ -40,14 +42,16 @@
 
   @include mobile {
     width: 320px;
-    height: 956px;
+
     max-height: 100vh;
     overflow-y: scroll;
   }
 
   @include tablet {
     padding-top: 0;
-    padding-right: 0;
+    padding-right: 28px;
+    padding-left: 0;
+    padding-bottom: 0;
 
     width: 822px;
     height: 598px;
@@ -58,6 +62,8 @@
 
 .modal-order {
   @include tablet {
+    margin-left: 28px;
+
     order: 1;
   }
 }
@@ -89,7 +95,8 @@
 
   @include tablet {
     display: block;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 28px;
 
     font-family: $secondaryFont;
     font-style: normal;
@@ -109,6 +116,10 @@
   font-size: 16px;
   line-height: calc(26 / 16);
   color: $lightThemeMainColor;
+
+  @include tablet {
+    margin-bottom: 24px;
+  }
 }
 
 .modal__text {
@@ -122,16 +133,28 @@
   line-height: calc(28 / 16);
 
   color: $searchLettersColor;
+
+  @include tablet {
+    width: 615px;
+    margin-bottom: 40px;
+  }
 }
 
 .modal__img {
   margin-bottom: 22px;
-  display: inline-block;
+
   width: 280px;
 
   @include tablet {
+    margin-bottom: 28px;
     width: 288px;
     height: 320px;
+  }
+}
+
+.modal__block-ing {
+  @include tablet {
+    margin-left: 32px;
   }
 }
 
@@ -145,6 +168,9 @@
   line-height: calc(24 / 16);
 
   color: #000917;
+  @include tablet {
+    margin-bottom: 8px;
+  }
 }
 
 .modal__per-cocktail {
@@ -161,6 +187,9 @@
 
 .modal__ing-all {
   margin-bottom: 32px;
+  @include tablet {
+    margin-bottom: 0px;
+  }
 }
 
 .modal__ing-input {
@@ -181,10 +210,10 @@
 
 .modal-star {
   color: #000917;
+  font-size: 16px;
 }
 
 .modal__button-add {
-  margin-bottom: 40px;
   padding: 12px 24px;
   cursor: pointer;
 
@@ -215,5 +244,11 @@
   color: $accentColor;
   background-color: #f5f5f5;
   border: none;
+  transition: $mainTransition;
+}
+
+.modal__button-add:active {
+  background-color: #fd5103;
+  color: $darkThemeMainColor;
   transition: $mainTransition;
 }
