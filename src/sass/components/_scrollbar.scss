@@ -1,0 +1,19 @@
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $accentColor;
+  background-image: url('../images/icons/scrollbar-icon.svg');
+  background-size: 10px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &:hover {
+    background-color: #fd5203bd;
+  }
+}

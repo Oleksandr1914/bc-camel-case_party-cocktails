@@ -4,9 +4,11 @@
 @import './base/common';
 @import './base/container';
 
+@import './components/scrollbar';
 @import './components/button';
 @import './components/search-form';
 @import './components/theme-switcher';
+@import './components/select';
 @import './components/modal-cocktails';
 @import './components/modal-ingredients';
 
