@@ -1,11 +1,19 @@
 const buttonCloseIngredients = document.querySelector(
   '.modal__close[ingredients-close]'
 );
-console.dir(buttonCloseIngredients);
+const refBackdrop = document.querySelector('.backdrop-ingredients');
+
+console.dir(refBackdrop);
 buttonCloseIngredients.addEventListener('click', CloseModalIngredients);
+refBackdrop.addEventListener('click', onBackdropClick);
 
 function CloseModalIngredients() {
   const dataModal = document.querySelector('[data-modal=modal]');
+  dataModal.classList.add('is-hidden-ing');
+}
 
-  dataModal.classList.add('is-hidden');
+function onBackdropClick(event) {
+  if (event.currentTarget === event.target) {
+    CloseModalIngredients();
+  }
 }
