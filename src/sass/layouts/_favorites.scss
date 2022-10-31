@@ -1,5 +1,12 @@
 .favorite__container {
-  padding-top: 60px;
+  margin-top: 114px;
+  @media screen and (min-width: 768px) {
+    margin-top: 131px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 132px;
+  }
 }
 
 .favorite__title {
