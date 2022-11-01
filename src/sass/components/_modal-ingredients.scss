@@ -1,4 +1,4 @@
-.backdrop {
+.backdrop-ingredients {
   overflow-y: scroll;
   position: fixed;
   top: 0;
@@ -9,18 +9,19 @@
   transition: opacity 250ms linear, visibility 250ms linear;
 }
 
-.backdrop.is-hidden {
+.backdrop-ingredients.is-hidden-ing {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.backdrop.is-hidden .modal-ingredients {
+.backdrop-ingredients.is-hidden-ing .modal-ingredients {
   transform: translate(-50%, -50%) scale(0) rotate(0);
 }
 
 .modal-ingredients {
   position: absolute;
+  z-index: 9;
 
   padding: 40px 20px;
 
