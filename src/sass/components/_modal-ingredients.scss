@@ -1,11 +1,12 @@
 .backdrop-ingredients {
+  z-index: 105;
   overflow-y: scroll;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
   transition: opacity 250ms linear, visibility 250ms linear;
 }
 
@@ -21,10 +22,10 @@
 
 .modal-ingredients {
   position: absolute;
-  z-index: 9;
+  z-index: 120;
 
   padding: 40px 20px;
-
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(360deg);
@@ -36,7 +37,7 @@
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
   @include mobile {
-    width: 320px;
+    width: 480px;
     height: 673px;
   }
 
@@ -138,7 +139,7 @@
 }
 
 .modal-ingredients-star {
-  color: #000917;
+  color: $accentColor;
 }
 
 .modal-ingredients__button-add {
@@ -178,7 +179,7 @@
 }
 
 .modal-ingredients__button-add:active {
-  background-color: #fd5103;
+  background-color: $accentColor;
   transition: $mainTransition;
   color: $darkThemeMainColor;
 }
