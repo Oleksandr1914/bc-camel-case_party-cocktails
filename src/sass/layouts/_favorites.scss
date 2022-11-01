@@ -1,0 +1,265 @@
+.section.favorite__cocktails {
+  margin-top: 114px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 131px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 132px;
+  }
+}
+
+.section.favorite__ingredients {
+  margin-top: 114px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 131px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 132px;
+  }
+}
+
+.favorite__title {
+  text-align: center;
+  margin-bottom: 60px;
+
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+  color: $lightThemeMainColor;
+
+  @media screen and (min-width: 768px) {
+    font-family: $secondaryFont;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.18;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-family: $mainFont;
+    font-size: 48px;
+    line-height: 1.5;
+  }
+}
+
+.favorite__text {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 239px;
+
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 3;
+  color: $lightThemeMainColor;
+
+  @media screen and (min-width: 768px) {
+    max-width: 296px;
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 385px;
+    font-size: 32px;
+    line-height: 2.25;
+  }
+}
+
+// Ingerients card
+
+.ingredient__card-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 31px;
+  }
+}
+
+.ingredient__card {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #fd5103;
+  border-radius: 4px;
+
+  @media screen and (min-width: 480px) {
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 395px;
+    padding-top: 30px;
+    padding-right: 28px;
+    padding-bottom: 26px;
+    padding-left: 28px;
+  }
+
+  &-title {
+    font-family: $secondaryFont;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 1.61;
+    color: $lightThemeMainColor;
+
+    @media screen and (min-width: 768px) {
+      font-size: 28px;
+      line-height: 1.17;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 32px;
+      line-height: 1.18;
+    }
+  }
+  &-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    font-family: $mainFont;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #000000;
+    transition: $mainTransition;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 28px;
+      margin-bottom: 28px;
+
+      font-size: 16px;
+      line-height: 1.5;
+      color: $searchLettersColor;
+    }
+
+    &:hover,
+    &:focus {
+      color: $accentColor;
+      cursor: pointer;
+    }
+  }
+}
+
+.btn__list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn__learn-more {
+  padding-top: 7px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 17px;
+
+  font-family: $secondaryFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+
+  background: #fe7031;
+  border: 1px solid $accentColor;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color $mainTransition;
+
+  &:hover,
+  &:focus {
+    background-color: #f5f5f5;
+    color: $accentColor;
+  }
+
+  &:active {
+    background-color: $accentColor;
+    color: #ffffff;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 27px;
+    padding-right: 27px;
+
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+}
+
+.btn__remove {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 7px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 16px;
+
+  font-family: $secondaryFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: $accentColor;
+
+  background-color: inherit;
+  border: 1px solid $accentColor;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color $mainTransition;
+
+  &:hover,
+  &:focus {
+    background-color: #f5f5f5;
+  }
+
+  &:active {
+    background-color: #e2e8ee;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    padding-right: 14px;
+    gap: 4px;
+
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 18px;
+    padding-right: 24px;
+  }
+}
