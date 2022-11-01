@@ -24,19 +24,3 @@ function myFunction() {
     header.classList.remove('sticky');
   }
 }
-
-// Click letters ---------------
-
-document.querySelector('.hero__box-lists').addEventListener('click', ev => {
-  const elemLetter = document.querySelectorAll('.hero__box-letter');
-  const arrLet = [...elemLetter].find(e => e.classList.contains('let'));
-  const elemNumb = document.querySelectorAll('.hero__box-numb');
-  const arrNumb = [...elemNumb].find(e => e.classList.contains('let'));
-  if (arrLet) {
-    arrLet.classList.remove('let');
-  } else if (arrNumb) {
-    arrNumb.classList.remove('let');
-  }
-  const targ = ev.target;
-  targ.classList.add('let');
-});

@@ -179,4 +179,11 @@
 
 .hero__contein-img {
   width: 100%;
+  @include tablet {
+    width: 345px;
+  }
+}
+
+.hidden-title {
+  display: none;
 }

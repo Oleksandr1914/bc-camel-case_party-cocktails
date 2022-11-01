@@ -1,4 +1,5 @@
 import { Select } from './select';
+import addMarcupOnLetterMobil from './fetch-cocktails';
 
 const select = new Select('#select', {
   placeholder: 'A',
@@ -41,6 +42,8 @@ const select = new Select('#select', {
     { id: '37', value: '0' },
   ],
   onSelect(item) {
-    console.log('Selected Item', item);
+    // console.log('Selected Item', item);
+    const a = item.value;
+    addMarcupOnLetterMobil(a.toLowerCase());
   },
 });
