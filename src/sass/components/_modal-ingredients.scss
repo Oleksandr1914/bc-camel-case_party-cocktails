@@ -1,0 +1,184 @@
+.backdrop-ingredients {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms linear, visibility 250ms linear;
+}
+
+.backdrop-ingredients.is-hidden-ing {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop-ingredients.is-hidden-ing .modal-ingredients {
+  transform: translate(-50%, -50%) scale(0) rotate(0);
+}
+
+.modal-ingredients {
+  position: absolute;
+  z-index: 9;
+
+  padding: 40px 20px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  transition: transform 250ms linear;
+  background-color: $lightThemeBG;
+
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  @include mobile {
+    width: 320px;
+    height: 673px;
+  }
+
+  @include tablet {
+    padding: 0;
+    width: 715px;
+    height: 557px;
+  }
+}
+
+.modal-ingredients__title {
+  margin-bottom: 20px;
+
+  font-family: $secondaryFont;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: calc(38 / 32);
+
+  color: $lightThemeMainColor;
+  @include tablet {
+    margin-left: 28px;
+    margin-top: 40px;
+    margin-bottom: 28px;
+  }
+}
+
+.modal-ingredients__inst {
+  margin-bottom: 20px;
+
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: calc(24 / 16);
+
+  text-transform: uppercase;
+  color: $lightThemeMainColor;
+  @include tablet {
+    margin-left: 28px;
+    margin-bottom: 40px;
+  }
+}
+
+.modal-ingredients__border {
+  @include tablet {
+    margin-bottom: 28px;
+
+    width: 100%;
+    margin-bottom: 28px;
+
+    border-bottom: 1px solid $accentColor;
+  }
+}
+
+.modal-ingredients__text {
+  margin-bottom: 28px;
+
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(28 / 16);
+
+  color: $searchLettersColor;
+
+  @include tablet {
+    width: 654px;
+    margin-left: 28px;
+  }
+}
+
+.modal-ingredients__campari {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: calc(28 / 16);
+
+  color: $lightThemeMainColor;
+}
+
+.modal-ingredients__ing-all {
+  margin-bottom: 32px;
+  @include tablet {
+    margin-left: 28px;
+    margin-bottom: 40px;
+  }
+}
+
+.modal-ingredients__ing-input {
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(26 / 16);
+
+  color: $searchLettersColor;
+}
+
+.modal-ingredients-star {
+  color: #000917;
+}
+
+.modal-ingredients__button-add {
+  margin-bottom: 40px;
+  padding: 12px 24px;
+  cursor: pointer;
+
+  font-family: $secondaryFont;
+  font-size: 20px;
+  line-height: calc(24 / 20);
+  letter-spacing: 0.02em;
+
+  border-radius: 4px;
+  transition: $mainTransition;
+  border: none;
+
+  color: $darkThemeMainColor;
+  background-color: #fe7031;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  @include tablet {
+    margin-left: auto;
+    margin-right: 28px;
+    margin-bottom: 0;
+
+    display: block;
+  }
+}
+
+.modal-ingredients__button-add:hover,
+.modal-ingredients__button-add:focus {
+  color: $accentColor;
+  background-color: #f5f5f5;
+  border: none;
+  transition: $mainTransition;
+}
+
+.modal-ingredients__button-add:active {
+  background-color: #fd5103;
+  transition: $mainTransition;
+  color: $darkThemeMainColor;
+}
