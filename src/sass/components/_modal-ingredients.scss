@@ -1,6 +1,8 @@
 .backdrop-ingredients {
   z-index: 105;
+
   overflow-y: scroll;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -26,6 +28,7 @@
 
   padding: 40px 20px;
   width: 100%;
+  max-width: 320px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(360deg);
@@ -36,12 +39,8 @@
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
-  @include mobile {
-    width: 480px;
-    height: 673px;
-  }
-
   @include tablet {
+    max-width: none;
     padding: 0;
     width: 715px;
     height: 557px;
