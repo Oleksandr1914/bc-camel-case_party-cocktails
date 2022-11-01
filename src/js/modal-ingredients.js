@@ -3,7 +3,6 @@ const buttonCloseIngredients = document.querySelector(
 );
 const refBackdrop = document.querySelector('.backdrop-ingredients');
 
-console.dir(refBackdrop);
 buttonCloseIngredients.addEventListener('click', CloseModalIngredients);
 refBackdrop.addEventListener('click', onBackdropClick);
 

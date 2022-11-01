@@ -31,7 +31,7 @@ const search = document.querySelector('#search');
 const random = document.querySelector('#random');
 const cocktailsElement = document.querySelector('#cocktails');
 const resultHeading = document.querySelector('#result-heading');
-const selectedCocktail = document.querySelector('#selected-cocktail');
+// const selectedCocktail = document.querySelector('#selected-cocktail');
 const learnmore = document.querySelector('.btn-lm');
 
 // Берем коктейли из API
@@ -40,7 +40,7 @@ const searchCocktail = e => {
 
   // Очищаем поиск предыдущих коктейлей
   cocktailsElement.innerHTML = '';
-  selectedCocktail.innerHTML = '';
+  // selectedCocktail.innerHTML = '';
 
   // Значение ввода
   const searchInput = search.value;
@@ -172,6 +172,7 @@ function addMarcupOnLetter(letter) {
           )
           .join('');
       }
+      document.querySelector('.btn-lm').addEventListener('click', openMod);
     })
     .catch(error => console.log(error));
 }
@@ -215,6 +216,7 @@ export default function addMarcupOnLetterMobil(lett) {
           )
           .join('');
       }
+      document.querySelector('.btn-lm').addEventListener('click', openMod);
     })
     .catch(error => console.log(error));
 }
@@ -248,7 +250,92 @@ function addMercupRandomCocktails() {
                   </div>
                 </div>`;
         cocktailsElement.insertAdjacentHTML('beforeend', marcup);
+        cocktailsElement.addEventListener('click', openMod);
       })
       .catch(error => console.log(error));
   }
+}
+
+function openMod(event) {
+  if (event.target.textContent == 'Learn more') {
+    document.querySelector('.backdrop').classList.remove('is-hidden');
+    const nameCocktail =
+      event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
+    fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        const markup = Object.keys(data.drinks[0])
+          .filter(el => el.includes('strIngredient') && data.drinks[0][el])
+          .map(
+            elem => `<li>
+                <a href="#" class="modal__ing-input">
+                  <span class="modal-star">✶</span> ${data.drinks[0][elem]}
+                </a>
+              </li>`
+          )
+          .join('');
+        const string = `
+        <div class="modal-flex">
+          <h1 class="modal__title">${data.drinks[0].strDrink}</h1>
+
+          <div class="modal-order">
+            <h2 class="modal__inst">INSTRACTIONS:</h2>
+            <p class="modal__text">${data.drinks[0].strInstructions}</p>
+          </div>
+          <div>
+            <img src=${data.drinks[0].strDrinkThumb} class="modal__img" />
+          </div>
+
+          <div class="modal__block-ing">
+            <h1 class="modal__title-tablet">${data.drinks[0].strDrink}</h1>
+            <h2 class="modal__ing">INGREDIENTS</h2>
+            <p class="modal__per-cocktail">Per cocktail</p>
+
+            <ul class="modal__ing-all">
+              ${markup}
+            </ul>
+          </div>
+        </div>
+        <button type="submit" class="modal__button-add">Add to favorite</button>
+      </div>`;
+        document
+          .querySelector('.modal')
+          .insertAdjacentHTML('beforeend', string);
+      });
+
+    ref.buttonCloseCocktails.addEventListener('click', CloseModalCocktails);
+    ref.hidden.addEventListener('click', onClickBackdrop);
+  }
+}
+
+const ref = {
+  buttonCloseCocktails: document.querySelector('.modal__close'),
+  hidden: document.querySelector('.backdrop'),
+  callModalIng: document.querySelector('.modal__ing-all'),
+};
+
+function CloseModalCocktails() {
+  document.querySelector('.mod').innerHTML = `<div class="modal">
+        <button type="button" class="modal__close" cocktails-close>
+          <svg class="modal-icon-close" width="32" Height="32">
+            <use href="/sprite.6e20b4c5.svg#icon-close"></use>
+          </svg>
+        </button>`;
+  document
+    .querySelector('[data-modal=modal-cocktails]')
+    .classList.add('is-hidden');
+}
+
+function onClickBackdrop(event) {
+  if (event.currentTarget === event.target) {
+    CloseModalCocktails();
+  }
+}
+
+function onClickCallModalIng() {
+  document
+    .querySelector('[data-modal=modal]')
+    .classList.remove('is-hidden-ing');
 }
