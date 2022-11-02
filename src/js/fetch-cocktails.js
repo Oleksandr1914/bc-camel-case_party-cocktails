@@ -212,6 +212,7 @@ function addMercupRandomCocktails() {
 function openMod(event) {
   if (event.target.textContent == 'Learn more') {
     document.querySelector('.backdrop').classList.remove('is-hidden');
+    document.body.classList.toggle('_lock');
     // document
     //   .querySelector('.backdrop')
     //   .addEventListener('click', onClickCallModalIng);
@@ -303,11 +304,13 @@ function CloseModalCocktails(event) {
   document
     .querySelector('[data-modal=modal-cocktails]')
     .classList.add('is-hidden');
+  document.body.classList.remove('_lock');
 }
 
 function onClickBackdrop(event) {
   if (event.currentTarget === event.target) {
     CloseModalCocktails();
+    document.body.classList.remove('_lock');
   }
 }
 
@@ -320,6 +323,7 @@ function onClickCallModalIng(event) {
   document
     .querySelector('[data-modal=modal]')
     .classList.remove('is-hidden-ing');
+  // document.body.classList.add('_lock');
   openModIngr(event);
 }
 
