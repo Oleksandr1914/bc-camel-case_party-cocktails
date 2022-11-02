@@ -116,7 +116,6 @@ document.querySelector('.hero__box-lists').addEventListener('click', ev => {
   targ.classList.add('let');
   const clickContent = targ.textContent;
   addMarcupOnLetter(clickContent.toLowerCase());
-  // sel.onSelect(item);
 });
 
 function addMarcupOnLetter(letter) {
@@ -139,8 +138,8 @@ function addMarcupOnLetter(letter) {
           .querySelector('.gallery-title')
           .classList.remove('hidden-title');
         paginatiomOn(data.drinks);
+        document.querySelector('.btn-lm').addEventListener('click', openMod);
       }
-      document.querySelector('.btn-lm').addEventListener('click', openMod);
     })
     .catch(error => console.log(error));
 }
@@ -292,6 +291,7 @@ function CloseModalCocktails(event) {
   //     .querySelector('[data-modal=modal-cocktails]')
   //     .classList.add('is-hidden');
   // }
+  console.log('mod', document.querySelector('.mod'));
   document.querySelector('.mod').innerHTML = `<div class="modal">
           <button type="button" class="modal__close" cocktails-close>
             <svg class="modal-icon-close" width="32" Height="32">
@@ -327,7 +327,7 @@ function paginatiomOn(arrData) {
 
   let notesOnPage = 3;
   for (const item of items) {
-    markupCardPaginStart();
+    markupCardPaginStart(arrData);
     item.addEventListener('click', markupCardPagin);
   }
 
@@ -336,6 +336,7 @@ function paginatiomOn(arrData) {
     const start = (pageNum - 1) * notesOnPage;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
+    console.log('notes', notes);
     cocktailsElement.innerHTML = notes
       .map(
         cocktail => `
@@ -356,13 +357,14 @@ function paginatiomOn(arrData) {
       .join('');
   }
 
-  function markupCardPaginStart() {
+  function markupCardPaginStart(arrData) {
     const pageNum = +this.innerHTML;
     // console.log(pageNum);
-    const start = 1;
+    const start = 0;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
-    // console.log(notes);
+    // console.log('arrData', arrData);
+    // console.log('notes', notes);
     cocktailsElement.innerHTML = notes
       .map(
         cocktail => `
