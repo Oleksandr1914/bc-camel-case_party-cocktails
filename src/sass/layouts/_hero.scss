@@ -84,6 +84,8 @@
   width: 24px;
   height: 25px;
   cursor: pointer;
+  transition: font-size $mainTransition, color $mainTransition,
+    text-shadow $mainTransition, text-stroke $mainTransition;
 
   color: #5f6775;
   @include desktop {

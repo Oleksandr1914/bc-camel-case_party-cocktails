@@ -284,6 +284,7 @@
     font-size: 28px;
     line-height: 0.85;
     letter-spacing: 0.02em;
+    background-color: $lightThemeBG;
     transition: background-color $mainTransition, color $mainTransition;
 
     &:hover,

@@ -45,6 +45,7 @@
   width: 100%;
   border: 1px solid #fd5103;
   border-radius: 4px;
+  transition: box-shadow $mainTransition, transform $mainTransition;
 
   @media screen and (min-width: 768px) {
     width: 335px;
@@ -81,6 +82,8 @@
   letter-spacing: 0.02em;
 
   cursor: pointer;
+  transition: box-shadow $mainTransition, transform $mainTransition,
+    color $mainTransition;
 
   &:hover {
     background-color: #ffffff;
