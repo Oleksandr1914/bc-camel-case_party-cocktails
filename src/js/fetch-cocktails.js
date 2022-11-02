@@ -1,3 +1,5 @@
+import { buttonSwitcher } from './favourites';
+
 // export async function getCocktailName(name) {
 //   const response = await fetch(
 //     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
@@ -188,20 +190,31 @@ function addMercupRandomCocktails() {
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${addRandLetter()}`
     )
       .then(res => res.json())
+      
       .then(data => {
+      const {strDrinkThumb, strDrink, idDrink} = data.drinks[0]
+        const card = JSON.stringify({
+          src: strDrinkThumb,
+          alt : strDrink.replaceAll(' ', '_'),
+          id : idDrink,
+          text : strDrink.replaceAll(' ', '_')
+        })
+
         const marcup = `<div class="cocktails__card">
                 <div>
-                    <img width="280" class="cocktails__img" src=${data.drinks[0].strDrinkThumb} alt= ${data.drinks[0].strDrink} />
+                    <img width="280" class="cocktails__img" src=${strDrinkThumb} alt= ${strDrink} />
                     </div>
-                    <p class="cocktail-info" data-cocktailID=${data.drinks[0].idDrink}>
-                        ${data.drinks[0].strDrink}</p>
+                    <p class="cocktail-info" data-cocktailID=${idDrink}>
+                        ${strDrink}</p>
                     <div class="button-wrapper">
                     <button class="btn-lm" type="button">Learn more</button>
-                    <button class="btn-add" type="button">Add to</button>
+                    <button class="btn-add"  data-card=${card} type="button">Add to</button>
                   </div>
                 </div>`;
         cocktailsElement.insertAdjacentHTML('beforeend', marcup);
         cocktailsElement.addEventListener('click', openMod);
+        cocktailsElement.addEventListener('click', buttonSwitcher);
+
       })
       .catch(error => console.log(error));
   }
