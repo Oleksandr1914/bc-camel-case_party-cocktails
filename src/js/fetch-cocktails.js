@@ -25,13 +25,14 @@
 //   return await response.json();
 // }
 import image from '../images/hero/desktop/group-desktop-min.png';
+import openModIngr from '../js/modal-ingredients';
 
 const submit = document.querySelector('#submit');
 const search = document.querySelector('#search');
 const random = document.querySelector('#random');
 const cocktailsElement = document.querySelector('#cocktails');
 const resultHeading = document.querySelector('#result-heading');
-const selectedCocktail = document.querySelector('#selected-cocktail');
+// const selectedCocktail = document.querySelector('#selected-cocktail');
 const learnmore = document.querySelector('.btn-lm');
 
 // Берем коктейли из API
@@ -40,7 +41,7 @@ const searchCocktail = e => {
 
   // Очищаем поиск предыдущих коктейлей
   cocktailsElement.innerHTML = '';
-  selectedCocktail.innerHTML = '';
+  // selectedCocktail.innerHTML = '';
 
   // Значение ввода
   const searchInput = search.value;
@@ -72,24 +73,8 @@ const searchCocktail = e => {
           document
             .querySelector('.gallery-title')
             .classList.remove('hidden-title');
-          cocktailsElement.innerHTML = data.drinks
-            .map(
-              cocktail => `
-                <div class="cocktails__card">
-                <div>
-                    <img width="280" class="cocktails__img" src="${cocktail.strDrinkThumb}" alt= "${cocktail.strDrink}" />
-                    </div>
-                    <p class="cocktail-info" data-cocktailID="${cocktail.idDrink}">
-                        ${cocktail.strDrink}</p>
-                   
-                    <div class="button-wrapper">
-                    <button class="btn-lm" type="button">Learn more</button>
-                    <button class="btn-add" type="button">Add to</button>
-                  </div>
-                </div>
-                `
-            )
-            .join('');
+
+          paginatiomOn(data.drinks);
         }
       })
       .catch(error => console.log(error));
@@ -131,7 +116,6 @@ document.querySelector('.hero__box-lists').addEventListener('click', ev => {
   targ.classList.add('let');
   const clickContent = targ.textContent;
   addMarcupOnLetter(clickContent.toLowerCase());
-  // sel.onSelect(item);
 });
 
 function addMarcupOnLetter(letter) {
@@ -153,31 +137,15 @@ function addMarcupOnLetter(letter) {
         document
           .querySelector('.gallery-title')
           .classList.remove('hidden-title');
-        cocktailsElement.innerHTML = data.drinks
-          .map(
-            cocktail => `
-                <div class="cocktails__card">
-                <div>
-                    <img width="280" class="cocktails__img" src=${cocktail.strDrinkThumb} alt= ${cocktail.strDrink} />
-                    </div>
-                    <p class="cocktail-info" data-cocktailID=${cocktail.idDrink}>
-                        ${cocktail.strDrink}</p>
-                   
-                    <div class="button-wrapper">
-                    <button class="btn-lm" type="button">Learn more</button>
-                    <button class="btn-add" type="button">Add to</button>
-                  </div>
-                </div>
-                `
-          )
-          .join('');
+        paginatiomOn(data.drinks);
+        document.querySelector('.btn-lm').addEventListener('click', openMod);
       }
     })
     .catch(error => console.log(error));
 }
 
 export default function addMarcupOnLetterMobil(lett) {
-  console.log(lett);
+  // console.log(lett);
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${lett}`)
     .then(res => res.json())
     .then(data => {
@@ -196,25 +164,9 @@ export default function addMarcupOnLetterMobil(lett) {
         document
           .querySelector('.gallery-title')
           .classList.remove('hidden-title');
-        cocktailsElement.innerHTML = data.drinks
-          .map(
-            cocktail => `
-                <div class="cocktails__card">
-                <div>
-                    <img width="280" class="cocktails__img" src=${cocktail.strDrinkThumb} alt= ${cocktail.strDrink} />
-                    </div>
-                    <p class="cocktail-info" data-cocktailID=${cocktail.idDrink}>
-                        ${cocktail.strDrink}</p>
-                   
-                    <div class="button-wrapper">
-                    <button class="btn-lm" type="button">Learn more</button>
-                    <button class="btn-add" type="button">Add to</button>
-                  </div>
-                </div>
-                `
-          )
-          .join('');
+        paginatiomOn(data.drinks);
       }
+      document.querySelector('.btn-lm').addEventListener('click', openMod);
     })
     .catch(error => console.log(error));
 }
@@ -248,7 +200,188 @@ function addMercupRandomCocktails() {
                   </div>
                 </div>`;
         cocktailsElement.insertAdjacentHTML('beforeend', marcup);
+        cocktailsElement.addEventListener('click', openMod);
       })
       .catch(error => console.log(error));
+  }
+}
+
+// ---------> відкриття модалки <--------
+
+function openMod(event) {
+  if (event.target.textContent == 'Learn more') {
+    document.querySelector('.backdrop').classList.remove('is-hidden');
+    // document
+    //   .querySelector('.backdrop')
+    //   .addEventListener('click', onClickCallModalIng);
+    // document
+    //   .querySelector('.backdrop')
+    //   .addEventListener('click', CloseModalCocktails);
+    const nameCocktail =
+      event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
+    fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        const markup = Object.keys(data.drinks[0])
+          .filter(el => el.includes('strIngredient') && data.drinks[0][el])
+          .map(
+            elem => `<li>
+                <a href="#" class="modal__ing-input">
+                  <span class="modal-star">✶</span> ${data.drinks[0][elem]}
+                </a>
+              </li>`
+          )
+          .join('');
+        const string = `
+        <div class="modal-flex">
+          <h1 class="modal__title">${data.drinks[0].strDrink}</h1>
+
+          <div class="modal-order">
+            <h2 class="modal__inst">INSTRACTIONS:</h2>
+            <p class="modal__text">${data.drinks[0].strInstructions}</p>
+          </div>
+          <div>
+            <img src=${data.drinks[0].strDrinkThumb} class="modal__img" />
+          </div>
+
+          <div class="modal__block-ing">
+            <h1 class="modal__title-tablet">${data.drinks[0].strDrink}</h1>
+            <h2 class="modal__ing">INGREDIENTS</h2>
+            <p class="modal__per-cocktail">Per cocktail</p>
+
+            <ul class="modal__ing-all">
+              ${markup}
+            </ul>
+          </div>
+        </div>
+        <button type="submit" class="modal__button-add">Add to favorite</button>
+      </div>`;
+        document
+          .querySelector('.modal')
+          .insertAdjacentHTML('beforeend', string);
+        document
+          .querySelector('.modal__ing-all')
+          .addEventListener('click', onClickCallModalIng);
+        document
+          .querySelector('.modal-icon-close')
+          .addEventListener('click', CloseModalCocktails);
+      });
+
+    ref.hidden.addEventListener('click', onClickBackdrop);
+  }
+}
+
+const ref = {
+  buttonCloseCocktails: document.querySelector('.modal__close'),
+  hidden: document.querySelector('.backdrop'),
+  callModalIng: document.querySelector('.modal__ing-all'),
+};
+
+function CloseModalCocktails(event) {
+  // if (event.target.nodeName === 'svg' || event.target.nodeName === 'use') {
+  //   document.querySelector('.mod').innerHTML = `<div class="modal">
+  //         <button type="button" class="modal__close" cocktails-close>
+  //           <svg class="modal-icon-close" width="32" Height="32">
+  //             <use href="/sprite.6e20b4c5.svg#icon-close"></use>
+  //           </svg>
+  //         </button>`;
+  //   document
+  //     .querySelector('[data-modal=modal-cocktails]')
+  //     .classList.add('is-hidden');
+  // }
+  console.log('mod', document.querySelector('.mod'));
+  document.querySelector('.mod').innerHTML = `<div class="modal">
+          <button type="button" class="modal__close" cocktails-close>
+            <svg class="modal-icon-close" width="32" Height="32">
+              <use href="/sprite.6e20b4c5.svg#icon-close"></use>
+            </svg>
+          </button>`;
+  document
+    .querySelector('[data-modal=modal-cocktails]')
+    .classList.add('is-hidden');
+}
+
+function onClickBackdrop(event) {
+  if (event.currentTarget === event.target) {
+    CloseModalCocktails();
+  }
+}
+
+function onClickCallModalIng(event) {
+  // if (event.target.nodeName === 'A') {
+  //   document
+  //     .querySelector('[data-modal=modal]')
+  //     .classList.remove('is-hidden-ing');
+  // }
+  document
+    .querySelector('[data-modal=modal]')
+    .classList.remove('is-hidden-ing');
+  openModIngr(event);
+}
+
+// --------->  pagination  <---------
+function paginatiomOn(arrData) {
+  const items = document.querySelectorAll('.pagin__item');
+
+  let notesOnPage = 3;
+  for (const item of items) {
+    markupCardPaginStart(arrData);
+    item.addEventListener('click', markupCardPagin);
+  }
+
+  function markupCardPagin() {
+    const pageNum = +this.innerHTML;
+    const start = (pageNum - 1) * notesOnPage;
+    const end = start + notesOnPage;
+    const notes = arrData.slice(start, end);
+    console.log('notes', notes);
+    cocktailsElement.innerHTML = notes
+      .map(
+        cocktail => `
+                <div class="cocktails__card">
+                <div>
+                    <img width="280" class="cocktails__img" src=${cocktail.strDrinkThumb} alt= ${cocktail.strDrink} />
+                    </div>
+                    <p class="cocktail-info" data-cocktailID=${cocktail.idDrink}>
+                        ${cocktail.strDrink}</p>
+                   
+                    <div class="button-wrapper">
+                    <button class="btn-lm" type="button">Learn more</button>
+                    <button class="btn-add" type="button">Add to</button>
+                  </div>
+                </div>
+                `
+      )
+      .join('');
+  }
+
+  function markupCardPaginStart(arrData) {
+    const pageNum = +this.innerHTML;
+    // console.log(pageNum);
+    const start = 0;
+    const end = start + notesOnPage;
+    const notes = arrData.slice(start, end);
+    // console.log('arrData', arrData);
+    // console.log('notes', notes);
+    cocktailsElement.innerHTML = notes
+      .map(
+        cocktail => `
+                <div class="cocktails__card">
+                <div>
+                    <img width="280" class="cocktails__img" src=${cocktail.strDrinkThumb} alt= ${cocktail.strDrink} />
+                    </div>
+                    <p class="cocktail-info" data-cocktailID=${cocktail.idDrink}>
+                        ${cocktail.strDrink}</p>
+                   
+                    <div class="button-wrapper">
+                    <button class="btn-lm" type="button">Learn more</button>
+                    <button class="btn-add" type="button">Add to</button>
+                  </div>
+                </div>
+                `
+      )
+      .join('');
   }
 }
