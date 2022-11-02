@@ -161,6 +161,7 @@ export default function addMarcupOnLetterMobil(lett) {
       />
   </div>`;
       } else {
+        console.log(data);
         document
           .querySelector('.gallery-title')
           .classList.remove('hidden-title');
@@ -219,6 +220,7 @@ function openMod(event) {
     //   .addEventListener('click', CloseModalCocktails);
     const nameCocktail =
       event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
+    console.dir(event);
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
     )
@@ -297,7 +299,7 @@ function CloseModalCocktails(event) {
             <svg class="modal-icon-close" width="32" Height="32">
               <use href="/sprite.6e20b4c5.svg#icon-close"></use>
             </svg>
-          </button>`;
+          </button></div>`;
   document
     .querySelector('[data-modal=modal-cocktails]')
     .classList.add('is-hidden');
@@ -336,7 +338,6 @@ function paginatiomOn(arrData) {
     const start = (pageNum - 1) * notesOnPage;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
-    console.log('notes', notes);
     cocktailsElement.innerHTML = notes
       .map(
         cocktail => `
@@ -359,12 +360,10 @@ function paginatiomOn(arrData) {
 
   function markupCardPaginStart(arrData) {
     const pageNum = +this.innerHTML;
-    // console.log(pageNum);
     const start = 0;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
-    // console.log('arrData', arrData);
-    // console.log('notes', notes);
+
     cocktailsElement.innerHTML = notes
       .map(
         cocktail => `
