@@ -47,8 +47,7 @@
   }
 
   @include tablet {
-    max-width: none;
-
+    padding: 0 0 28px 0;
     width: 715px;
     height: 557px;
   }
@@ -91,10 +90,7 @@
 .modal-ingredients__border {
   @include tablet {
     margin-bottom: 28px;
-
     width: 100%;
-    margin-bottom: 28px;
-
     border-bottom: 1px solid $accentColor;
   }
 }
@@ -111,8 +107,8 @@
   color: $searchLettersColor;
 
   @include tablet {
-    width: 654px;
     margin-left: 28px;
+    margin-right: 33px;
   }
 }
 
@@ -149,7 +145,6 @@
 }
 
 .modal-ingredients__button-add {
-  margin-bottom: 40px;
   padding: 12px 24px;
   cursor: pointer;
 
@@ -159,13 +154,13 @@
   letter-spacing: 0.02em;
 
   border-radius: 4px;
-  transition: $mainTransition;
   border: none;
 
   color: $darkThemeMainColor;
   background-color: #fe7031;
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transition: $mainTransition;
 
   @include tablet {
     margin-left: auto;
@@ -188,4 +183,6 @@
   background-color: $accentColor;
   transition: $mainTransition;
   color: $darkThemeMainColor;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+  transform: translateY(4px);
 }
