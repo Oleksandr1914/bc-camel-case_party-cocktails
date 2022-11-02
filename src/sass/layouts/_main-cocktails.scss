@@ -192,3 +192,24 @@
     color: #fcfcfc;
   }
 }
+
+.pagin {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.pagin__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fd5103;
+  border-radius: 25px;
+  width: 32px;
+  height: 32px;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+}
