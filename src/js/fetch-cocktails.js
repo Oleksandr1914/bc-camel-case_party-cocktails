@@ -333,8 +333,9 @@ function paginatiomOn(arrData) {
     item.addEventListener('click', markupCardPagin);
   }
 
-  function markupCardPagin() {
-    const pageNum = +this.innerHTML;
+  function markupCardPagin(event) {
+    console.log(event.target.textContent);
+    const pageNum = event.target.textContent;
     const start = (pageNum - 1) * notesOnPage;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
@@ -359,7 +360,7 @@ function paginatiomOn(arrData) {
   }
 
   function markupCardPaginStart(arrData) {
-    const pageNum = +this.innerHTML;
+    // const pageNum = event.target.textContent;
     const start = 0;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
