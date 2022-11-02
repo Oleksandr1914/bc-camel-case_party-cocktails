@@ -47,4 +47,56 @@ body {
   &._lock {
     overflow: hidden;
   }
+  &.light {
+    background-color: $lightThemeBG;
+    color: $lightThemeMainColor;
+
+    & .menu__content {
+      @media screen and (max-width: 1280px) {
+        background-color: $lightThemeBG;
+        color: $lightThemeMainColor;
+      }
+    }
+    & .navigation__sub-link {
+      background-color: $lightThemeBG;
+      &:hover,
+      &:focus {
+        background-color: $accentColor;
+        color: #ffffff;
+      }
+    }
+  }
+
+  &.dark {
+    background-color: $darkThemeBG;
+    color: $darkThemeMainColor;
+    fill: $darkThemeMainColor;
+    & .sticky {
+      background-color: rgba(0, 0, 0, 0.882);
+    }
+    // & .menu-icon span,
+    // & .menu-icon::before,
+    // & .menu-icon::after {
+    //   background-color: $darkThemeMainColor;
+    // }
+  }
+  & .menu__content {
+    @media screen and (max-width: 1280px) {
+      background-color: $darkThemeBG;
+      color: $darkThemeMainColor;
+    }
+  }
+  & .navigation__sub-link {
+    background-color: $darkThemeBG;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page {
+  flex: 1 1 auto;
 }

@@ -24,10 +24,14 @@
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <include src="./partials/header.html"></include>
-    <include src="./partials/hero.html"></include>
-    <include src="./partials/main-cocktails.html"></include>
-    <include src="./partials/footer.html"></include>
+    <div class="wrapper">
+      <include src="./partials/header.html"></include>
+      <main class="page">
+        <include src="./partials/hero.html"></include>
+        <include src="./partials/main-cocktails.html"></include>
+      </main>
+      <include src="./partials/footer.html"></include>
+    </div>
     <include src="./partials/modal-cocktails.html"></include>
     <include src="./partials/modal-ingredients.html"></include>
     <script type="module" src="./index.js"></script>
