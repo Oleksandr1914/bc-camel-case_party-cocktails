@@ -1,9 +1,6 @@
 .backdrop {
   z-index: 105;
 
-  overflow-y: scroll;
-  overflow-x: hidden;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -27,6 +24,9 @@
   z-index: 110;
   position: absolute;
 
+  overflow-y: scroll;
+  overflow-x: hidden;
+
   padding-top: 40px;
   padding-right: 20px;
   padding-bottom: 40px;
@@ -47,11 +47,8 @@
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
   @include mobile {
-    width: 320px;
-
+    width: 480px;
     max-height: 100vh;
-
-    overflow-y: scroll;
   }
 
   @include tablet {
@@ -62,13 +59,13 @@
     max-width: none;
 
     width: 822px;
-    min-height: 598px;
-    overflow-y: unset;
-    max-height: none;
+    height: 598px;
   }
 }
 
-.modal-order {
+// .container.mod {
+
+.container .modal-order {
   @include tablet {
     margin-left: 28px;
     order: 1;
