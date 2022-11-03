@@ -4,9 +4,11 @@
   line-height: 191%;
   text-align: center;
   color: inherit;
+  margin-top: 40px;
   margin-bottom: 60px;
 
   @media screen and (min-width: 768px) {
+    margin-top: 120px;
     font-weight: 700;
     font-size: 32px;
     line-height: 133%;
@@ -40,7 +42,6 @@
 
 .cocktails__card {
   text-align: center;
-  margin: auto;
   padding-bottom: 20px;
   width: 100%;
   border: 1px solid #fd5103;
@@ -221,5 +222,11 @@
   &:hover,
   &:focus {
     background-color: $accentColor;
+    color: #fcfcfc;
+  }
+  @include tablet {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }

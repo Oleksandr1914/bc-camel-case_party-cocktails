@@ -25,6 +25,11 @@
     font-size: 16px;
     line-height: 1.35;
     color: $accentColor;
+
+    span,
+    i {
+      pointer-events: none;
+    }
   }
 
   &__dropdown {
