@@ -91,6 +91,14 @@ body {
     & .up-icon {
       fill: $darkThemeMainColor;
     }
+    & .search-form__input {
+      color: #fff;
+      opacity: 0.8;
+      &::placeholder {
+        color: #fff;
+        opacity: 0.8;
+      }
+    }
   }
   & .menu__content {
     @media screen and (max-width: 1280px) {
