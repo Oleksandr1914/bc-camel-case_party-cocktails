@@ -215,4 +215,11 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 1.25;
+  transition: background-color $mainTransition;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: $accentColor;
+  }
 }
