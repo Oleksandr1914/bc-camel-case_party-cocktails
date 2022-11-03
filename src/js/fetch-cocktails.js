@@ -163,7 +163,6 @@ export default function addMarcupOnLetterMobil(lett) {
       />
   </div>`;
       } else {
-        console.log(data);
         document
           .querySelector('.gallery-title')
           .classList.remove('hidden-title');
@@ -342,16 +341,42 @@ function onClickCallModalIng(event) {
 
 // --------->  pagination  <---------
 function paginatiomOn(arrData) {
-  const items = document.querySelectorAll('.pagin__item');
+  const pagin = document.querySelector('.pagin');
+
+  const arrLi = [];
+  // -----------> створюємо динамічно li <----------
 
   let notesOnPage = 3;
+  widthControl();
+  const counterLi = Math.ceil(arrData.length / notesOnPage);
+  for (let i = 1; i <= counterLi; i += 1) {
+    arrLi.push(`<li class="pagin__item">${i}</li>`);
+  }
+  const stringLi = arrLi.join('');
+  pagin.innerHTML = stringLi;
+  markupCardPaginStart(arrData);
+  const items = document.querySelectorAll('.pagin__item');
+
   for (const item of items) {
-    markupCardPaginStart(arrData);
     item.addEventListener('click', markupCardPagin);
   }
 
+  // ---------->Визначаєм розмір екрана<-----------
+
+  function widthControl() {
+    if (window.innerWidth <= 768) {
+      notesOnPage = 3;
+    } else if (window.innerWidth > 768 && window.innerWidth <= 1280) {
+      notesOnPage = 6;
+      return notesOnPage;
+    } else {
+      notesOnPage = 9;
+    }
+  }
+  // ----------> додає картки при кліку на цифру <--------------
+
   function markupCardPagin(event) {
-    console.log(event.target.textContent);
+    // console.log(event.target.textContent);
     const pageNum = event.target.textContent;
     const start = (pageNum - 1) * notesOnPage;
     const end = start + notesOnPage;
@@ -375,6 +400,8 @@ function paginatiomOn(arrData) {
       )
       .join('');
   }
+
+  // ---------------->  додає картки при кліку на букву <---------
 
   function markupCardPaginStart(arrData) {
     // const pageNum = event.target.textContent;
