@@ -147,7 +147,6 @@ function addMarcupOnLetter(letter) {
 }
 
 export default function addMarcupOnLetterMobil(lett) {
-
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${lett}`)
     .then(res => res.json())
     .then(data => {
@@ -201,16 +200,15 @@ function addMercupRandomCocktails() {
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${addRandLetter()}`
     )
       .then(res => res.json())
-      
+
       .then(data => {
-    
-      const {strDrinkThumb, strDrink, idDrink} = data.drinks[0];
+        const { strDrinkThumb, strDrink, idDrink } = data.drinks[0];
         const card = JSON.stringify({
           src: strDrinkThumb,
-          alt : strDrink.replaceAll(' ', '_'),
-          id : idDrink,
-          text : strDrink.replaceAll(' ', '_')
-        })
+          alt: strDrink.replaceAll(' ', '_'),
+          id: idDrink,
+          text: strDrink.replaceAll(' ', '_'),
+        });
 
         const marcup = `<div class="cocktails__card">
                 <div>
@@ -226,7 +224,6 @@ function addMercupRandomCocktails() {
         cocktailsElement.insertAdjacentHTML('beforeend', marcup);
         // cocktailsElement.addEventListener('click', openMod);
         // cocktailsElement.addEventListener('click', buttonSwitcher);
-
       })
       .catch(error => console.log(error));
   }
@@ -238,12 +235,6 @@ function openMod(event) {
   if (event.target.textContent == 'Learn more') {
     document.querySelector('.backdrop').classList.remove('is-hidden');
     document.body.classList.toggle('_lock');
-    // document
-    //   .querySelector('.backdrop')
-    //   .addEventListener('click', onClickCallModalIng);
-    // document
-    //   .querySelector('.backdrop')
-    //   .addEventListener('click', CloseModalCocktails);
     const nameCocktail =
       event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
     console.dir(event);
@@ -308,18 +299,6 @@ const ref = {
 };
 
 function CloseModalCocktails(event) {
-  // if (event.target.nodeName === 'svg' || event.target.nodeName === 'use') {
-  //   document.querySelector('.mod').innerHTML = `<div class="modal">
-  //         <button type="button" class="modal__close" cocktails-close>
-  //           <svg class="modal-icon-close" width="32" Height="32">
-  //             <use href="/sprite.6e20b4c5.svg#icon-close"></use>
-  //           </svg>
-  //         </button>`;
-  //   document
-  //     .querySelector('[data-modal=modal-cocktails]')
-  //     .classList.add('is-hidden');
-  // }
- 
   document.querySelector('.mod').innerHTML = `<div class="modal">
           <button type="button" class="modal__close" cocktails-close>
             <svg class="modal-icon-close" width="32" Height="32">
@@ -340,11 +319,6 @@ function onClickBackdrop(event) {
 }
 
 function onClickCallModalIng(event) {
-  // if (event.target.nodeName === 'A') {
-  //   document
-  //     .querySelector('[data-modal=modal]')
-  //     .classList.remove('is-hidden-ing');
-  // }
   document
     .querySelector('[data-modal=modal]')
     .classList.remove('is-hidden-ing');
@@ -391,21 +365,19 @@ function paginatiomOn(arrData) {
   // ----------> додає картки при кліку на цифру <--------------
 
   function markupCardPagin(event) {
-  
     const pageNum = event.target.textContent;
     const start = (pageNum - 1) * notesOnPage;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
     cocktailsElement.innerHTML = notes
       .map(cocktail => {
-    
-        const {strDrinkThumb, strDrink, idDrink} = cocktail;
+        const { strDrinkThumb, strDrink, idDrink } = cocktail;
         const card = JSON.stringify({
           src: strDrinkThumb,
-          alt : strDrink.replaceAll(' ', '_'),
-          id : idDrink,
-          text : strDrink.replaceAll(' ', '_')
-        })
+          alt: strDrink.replaceAll(' ', '_'),
+          id: idDrink,
+          text: strDrink.replaceAll(' ', '_'),
+        });
 
         return `
                 <div class="cocktails__card">
@@ -435,13 +407,13 @@ function paginatiomOn(arrData) {
 
     cocktailsElement.innerHTML = notes
       .map(cocktail => {
-        const {strDrinkThumb, strDrink, idDrink} = cocktail;
+        const { strDrinkThumb, strDrink, idDrink } = cocktail;
         const card = JSON.stringify({
           src: strDrinkThumb,
-          alt : strDrink.replaceAll(' ', '_'),
-          id : idDrink,
-          text : strDrink.replaceAll(' ', '_')
-        })
+          alt: strDrink.replaceAll(' ', '_'),
+          id: idDrink,
+          text: strDrink.replaceAll(' ', '_'),
+        });
         return `
                 <div class="cocktails__card">
                 <div>

@@ -10,6 +10,10 @@
   }
 }
 
+.is-hidden-title {
+  display: none;
+}
+
 .section.favorite__ingredients {
   margin-top: 114px;
 
@@ -260,4 +264,11 @@
     padding-left: 18px;
     padding-right: 24px;
   }
+}
+
+.coctails__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
