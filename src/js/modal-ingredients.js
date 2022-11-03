@@ -31,12 +31,16 @@ export default function openModIngr(event) {
     .then(data => {
       const dataIngr = data.ingredients[0];
       let type = dataIngr.strType;
+      let alko = dataIngr.strABV;
+      let text = dataIngr.strDescription;
       if (!type) {
         type = '';
       }
-      let alko = dataIngr.strABV;
       if (!alko) {
         alko = 0;
+      }
+      if (!text) {
+        text = '';
       }
 
       const stingIng = `<div>
@@ -45,7 +49,7 @@ export default function openModIngr(event) {
             <h2 class="modal-ingredients__inst">${type}</h2>
           </div>
 
-          <p class="modal-ingredients__text">${dataIngr.strDescription}</p>
+          <p class="modal-ingredients__text">${text}</p>
         </div>
 
         <ul class="modal-ingredients__ing-all">
