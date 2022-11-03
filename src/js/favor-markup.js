@@ -2,7 +2,7 @@ import openMod from './favor-modal';
 import { buttonSwitcher } from './favourites';
 const STORAGE_KEY = 'favorite-cocktail';
 
-function renderFavCard() {
+export default function renderFavCard() {
   const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   // const markUp =
   document.querySelector('.coctails__list').innerHTML = localCocktails
@@ -47,12 +47,13 @@ function onRemoveBtn(event) {
   const STORAGE_KEY = 'favorite-cocktail';
   const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-  const eventCard = event.path[2].childNodes[3].innerText;
-  console.dir(eventCard);
+  const eventCard = event.path[2].childNodes[3].innerText.replaceAll(' ', '_');
+
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(
       localCocktails.filter(cocktail => cocktail.text !== eventCard)
     )
   );
+  renderFavCard();
 }

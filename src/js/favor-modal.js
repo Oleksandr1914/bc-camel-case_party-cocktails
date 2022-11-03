@@ -1,12 +1,13 @@
 import openModIngr from './modal-ingredients';
-
+import renderFavCard from './favor-markup';
+import svg from '../images/icons/sprite.svg';
+console.dir(svg);
 export default function openMod(event) {
   if (event.target.textContent == 'Learn more') {
     document.querySelector('.backdrop').classList.remove('is-hidden');
     document.body.classList.toggle('_lock');
     const nameCocktail =
       event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
-    console.dir(event);
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
     )
@@ -22,8 +23,8 @@ export default function openMod(event) {
               </li>`
           )
           .join('');
-        const string = `
-        <div class="modal-flex">
+        // const string =
+        document.querySelector('.modal-flex').innerHTML = `
           <h1 class="modal__title">${data.drinks[0].strDrink}</h1>
 
           <div class="modal-order">
@@ -44,17 +45,15 @@ export default function openMod(event) {
             </ul>
           </div>
         </div>
-        <button type="submit" class="btn-remove-fav">remove</button>
-      </div>`;
-        document
-          .querySelector('.modal')
-          .insertAdjacentHTML('beforeend', string);
+        `;
+        // document.querySelector('.modal-icon-close').addEventListener('click',);
+        // .insertAdjacentHTML('beforeend', string);
         document
           .querySelector('.modal__ing-all')
           .addEventListener('click', onClickCallModalIng);
         document
           .querySelector('.modal-icon-close')
-          .addEventListener('click', CloseModalCocktails);
+          .addEventListener('click', CloseModalCocktails, { once: true });
         document
           .querySelector('.btn-remove-fav')
           .addEventListener('click', buttonSwitcherFavorites);
@@ -68,17 +67,18 @@ export default function openMod(event) {
 
 function buttonSwitcherFavorites(event) {
   const STORAGE_KEY = 'favorite-cocktail';
-  let { classList, dataset } = event.target;
   const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  console.dir(event.target);
-  const eventCard = JSON.parse(dataset.card);
-
+  const eventCard = event.path[1]
+    .querySelector('.modal-flex')
+    .querySelector('h1')
+    .textContent.replaceAll(' ', '_');
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(
-      localCocktails.filter(cocktail => cocktail.id !== eventCard.id)
+      localCocktails.filter(cocktail => cocktail.text !== eventCard)
     )
   );
+  renderFavCard();
 }
 
 const ref = {
@@ -88,12 +88,12 @@ const ref = {
 };
 
 function CloseModalCocktails(event) {
-  document.querySelector('.mod').innerHTML = `<div class="modal">
-          <button type="button" class="modal__close" cocktails-close>
-            <svg class="modal-icon-close" width="32" Height="32">
-              <use href="/sprite.6e20b4c5.svg#icon-close"></use>
-            </svg>
-          </button></div>`;
+  // document.querySelector('.mod').innerHTML = `<div class="modal">
+  //         <button type="button" class="modal__close" cocktails-close>
+  //           <svg class="modal-icon-close" width="32" Height="32">
+  //             <use href="/sprite.6e20b4c5.svg#icon-close"></use>
+  //           </svg>
+  //         </button></div>`;
   document
     .querySelector('[data-modal=modal-cocktails]')
     .classList.add('is-hidden');
