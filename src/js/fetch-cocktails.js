@@ -147,7 +147,7 @@ function addMarcupOnLetter(letter) {
 }
 
 export default function addMarcupOnLetterMobil(lett) {
-  // console.log(lett);
+
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${lett}`)
     .then(res => res.json())
     .then(data => {
@@ -184,14 +184,26 @@ function addRandLetter() {
 addMercupRandomCocktails();
 
 function addMercupRandomCocktails() {
-  for (let i = 0; i < 9; i += 1) {
+  let notesOnPage;
+  function widthControl() {
+    if (window.innerWidth <= 768) {
+      notesOnPage = 3;
+    } else if (window.innerWidth > 768 && window.innerWidth <= 1280) {
+      notesOnPage = 6;
+      return notesOnPage;
+    } else {
+      notesOnPage = 9;
+    }
+  }
+  widthControl();
+  for (let i = 0; i < notesOnPage; i += 1) {
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${addRandLetter()}`
     )
       .then(res => res.json())
       
       .then(data => {
-        console.log(data.drinks)
+    
       const {strDrinkThumb, strDrink, idDrink} = data.drinks[0];
         const card = JSON.stringify({
           src: strDrinkThumb,
@@ -307,7 +319,7 @@ function CloseModalCocktails(event) {
   //     .querySelector('[data-modal=modal-cocktails]')
   //     .classList.add('is-hidden');
   // }
-  console.log('mod', document.querySelector('.mod'));
+ 
   document.querySelector('.mod').innerHTML = `<div class="modal">
           <button type="button" class="modal__close" cocktails-close>
             <svg class="modal-icon-close" width="32" Height="32">
@@ -377,14 +389,14 @@ function paginatiomOn(arrData) {
   // ----------> додає картки при кліку на цифру <--------------
 
   function markupCardPagin(event) {
-    // console.log(event.target.textContent);
+  
     const pageNum = event.target.textContent;
     const start = (pageNum - 1) * notesOnPage;
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
     cocktailsElement.innerHTML = notes
       .map(cocktail => {
-        console.log(cocktail);
+    
         const {strDrinkThumb, strDrink, idDrink} = cocktail;
         const card = JSON.stringify({
           src: strDrinkThumb,
