@@ -1,9 +1,11 @@
 import openMod from './favor-modal';
+import { buttonSwitcher } from './favourites';
 const STORAGE_KEY = 'favorite-cocktail';
 
 function renderFavCard() {
   const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  const markUp = localCocktails
+  // const markUp =
+  document.querySelector('.coctails__list').innerHTML = localCocktails
     .map(
       cocktail =>
         `<div class="cocktails__card">
@@ -16,19 +18,19 @@ function renderFavCard() {
                         ${cocktail.text.replaceAll('_', ' ')}</p>
                     <div class="button-wrapper">
                     <button class="btn-lm" type="button">Learn more</button>
-                    <button class="btn-add" type="button">Add to</button>
+                    <button class="btn-remove" type="button">remove</button>
                   </div>
                 </div>`
     )
     .join('');
-  console.log('hi');
-  document
-    .querySelector('.coctails__list')
-    .insertAdjacentHTML('beforeEnd', markUp);
+  //   document
+  //     .querySelector('.coctails__list')
+  //     .insertAdjacentHTML('beforeEnd', markUp);
   document.querySelector('.coctails__list').addEventListener('click', event => {
-    console.dir(event.target);
     if (event.target.textContent === 'Learn more') {
       openMod(event);
+    } else if (event.target.textContent === 'remove') {
+      onRemoveBtn(event);
     }
   });
   if (
@@ -40,3 +42,17 @@ function renderFavCard() {
   }
 }
 renderFavCard();
+
+function onRemoveBtn(event) {
+  const STORAGE_KEY = 'favorite-cocktail';
+  const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+  const eventCard = event.path[2].childNodes[3].innerText;
+  console.dir(eventCard);
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(
+      localCocktails.filter(cocktail => cocktail.text !== eventCard)
+    )
+  );
+}

@@ -44,7 +44,7 @@ export default function openMod(event) {
             </ul>
           </div>
         </div>
-        <button type="submit" class="modal__button-add">Add to favorite</button>
+        <button type="submit" class="btn-remove-fav">remove</button>
       </div>`;
         document
           .querySelector('.modal')
@@ -55,10 +55,30 @@ export default function openMod(event) {
         document
           .querySelector('.modal-icon-close')
           .addEventListener('click', CloseModalCocktails);
+        document
+          .querySelector('.btn-remove-fav')
+          .addEventListener('click', buttonSwitcherFavorites);
       });
 
     ref.hidden.addEventListener('click', onClickBackdrop);
   }
+}
+
+// ---------------  має видаляти картку ------------
+
+function buttonSwitcherFavorites(event) {
+  const STORAGE_KEY = 'favorite-cocktail';
+  let { classList, dataset } = event.target;
+  const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  console.dir(event.target);
+  const eventCard = JSON.parse(dataset.card);
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(
+      localCocktails.filter(cocktail => cocktail.id !== eventCard.id)
+    )
+  );
 }
 
 const ref = {

@@ -1,29 +1,37 @@
 const STORAGE_KEY = 'favorite-cocktail';
 
-export function buttonSwitcher (event) {
-    console.dir(event.target)
-    let {classList, dataset} = event.target;
-    if(!classList.contains("btn-add")) {
-        return;
-    }
-    classList.toggle("btn-remove");
-    event.target.textContent = classList.contains("btn-remove")? "remove" : "addTo";
+export function buttonSwitcher(event) {
+  //   console.dir(event.target);
+  let { classList, dataset } = event.target;
+  console.log(dataset);
+  if (!classList.contains('btn-add')) {
+    return;
+  }
+  classList.toggle('btn-remove');
+  event.target.textContent = classList.contains('btn-remove')
+    ? 'remove'
+    : 'addTo';
 
-    console.log('data-set' , dataset.card)
-    const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    const eventCard = JSON.parse(dataset.card);
- 
-if (classList.contains("btn-remove")) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([...localCocktails, eventCard]))
+  // console.log('data-set' , dataset.card)
+  const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  const eventCard = JSON.parse(dataset.card);
+
+  if (classList.contains('btn-remove')) {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify([...localCocktails, eventCard])
+    );
+  } else {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(
+        localCocktails.filter(cocktail => cocktail.id !== eventCard.id)
+      )
+    );
+  }
+  // console.log(localCocktails);
+  // console.log(eventCard);
 }
-else {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(localCocktails.filter ( cocktail => cocktail.id !== eventCard.id)))
-}
-console.log(localCocktails);
-console.log(eventCard);
-
-};
-
 
 // function renderFavCard () {
 //     const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];

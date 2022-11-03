@@ -235,6 +235,7 @@ function openMod(event) {
   if (event.target.textContent == 'Learn more') {
     document.querySelector('.backdrop').classList.remove('is-hidden');
     document.body.classList.toggle('_lock');
+
     const nameCocktail =
       event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
     console.dir(event);
