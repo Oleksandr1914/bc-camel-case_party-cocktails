@@ -353,11 +353,13 @@ function paginatiomOn(arrData) {
   function widthControl() {
     if (window.innerWidth <= 768) {
       notesOnPage = 3;
+      return notesOnPage;
     } else if (window.innerWidth > 768 && window.innerWidth <= 1280) {
       notesOnPage = 6;
       return notesOnPage;
     } else {
       notesOnPage = 9;
+      return notesOnPage;
     }
   }
   // ----------> додає картки при кліку на цифру <--------------
