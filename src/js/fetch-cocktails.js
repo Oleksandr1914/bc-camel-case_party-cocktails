@@ -191,7 +191,8 @@ function addMercupRandomCocktails() {
       .then(res => res.json())
       
       .then(data => {
-      const {strDrinkThumb, strDrink, idDrink} = data.drinks[0]
+        console.log(data.drinks)
+      const {strDrinkThumb, strDrink, idDrink} = data.drinks[0];
         const card = JSON.stringify({
           src: strDrinkThumb,
           alt : strDrink.replaceAll(' ', '_'),
@@ -211,8 +212,8 @@ function addMercupRandomCocktails() {
                   </div>
                 </div>`;
         cocktailsElement.insertAdjacentHTML('beforeend', marcup);
-        cocktailsElement.addEventListener('click', openMod);
-        cocktailsElement.addEventListener('click', buttonSwitcher);
+        // cocktailsElement.addEventListener('click', openMod);
+        // cocktailsElement.addEventListener('click', buttonSwitcher);
 
       })
       .catch(error => console.log(error));
@@ -382,8 +383,17 @@ function paginatiomOn(arrData) {
     const end = start + notesOnPage;
     const notes = arrData.slice(start, end);
     cocktailsElement.innerHTML = notes
-      .map(
-        cocktail => `
+      .map(cocktail => {
+        console.log(cocktail);
+        const {strDrinkThumb, strDrink, idDrink} = cocktail;
+        const card = JSON.stringify({
+          src: strDrinkThumb,
+          alt : strDrink.replaceAll(' ', '_'),
+          id : idDrink,
+          text : strDrink.replaceAll(' ', '_')
+        })
+
+        return `
                 <div class="cocktails__card">
                 <div>
                     <img width="280" class="cocktails__img" src=${cocktail.strDrinkThumb} alt= ${cocktail.strDrink} />
@@ -393,11 +403,11 @@ function paginatiomOn(arrData) {
                    
                     <div class="button-wrapper">
                     <button class="btn-lm" type="button">Learn more</button>
-                    <button class="btn-add" type="button">Add to</button>
+                    <button class="btn-add" data-card=${card} type="button">Add to</button>
                   </div>
                 </div>
-                `
-      )
+                `;
+      })
       .join('');
   }
 
@@ -410,8 +420,15 @@ function paginatiomOn(arrData) {
     const notes = arrData.slice(start, end);
 
     cocktailsElement.innerHTML = notes
-      .map(
-        cocktail => `
+      .map(cocktail => {
+        const {strDrinkThumb, strDrink, idDrink} = cocktail;
+        const card = JSON.stringify({
+          src: strDrinkThumb,
+          alt : strDrink.replaceAll(' ', '_'),
+          id : idDrink,
+          text : strDrink.replaceAll(' ', '_')
+        })
+        return `
                 <div class="cocktails__card">
                 <div>
                     <img width="280" class="cocktails__img" src=${cocktail.strDrinkThumb} alt= ${cocktail.strDrink} />
@@ -421,11 +438,14 @@ function paginatiomOn(arrData) {
                    
                     <div class="button-wrapper">
                     <button class="btn-lm" type="button">Learn more</button>
-                    <button class="btn-add" type="button">Add to</button>
+                    <button class="btn-add" data-card=${card} type="button">Add to</button>
                   </div>
                 </div>
-                `
-      )
+                `;
+      })
       .join('');
   }
 }
+
+cocktailsElement.addEventListener('click', openMod);
+cocktailsElement.addEventListener('click', buttonSwitcher);
