@@ -2,6 +2,10 @@
 
 //
 
+html {
+  scroll-behavior: smooth;
+}
+
 h1,
 h2,
 h3,
@@ -71,6 +75,10 @@ body {
     & .menu__icon::after {
       background-color: $lightThemeMainColor;
     }
+
+    & .up-icon {
+      fill: $lightThemeMainColor;
+    }
   }
 
   &.dark {
@@ -80,11 +88,9 @@ body {
     & .sticky {
       background-color: rgba(0, 0, 0, 0.882);
     }
-    // & .menu-icon span,
-    // & .menu-icon::before,
-    // & .menu-icon::after {
-    //   background-color: $darkThemeMainColor;
-    // }
+    & .up-icon {
+      fill: $darkThemeMainColor;
+    }
   }
   & .menu__content {
     @media screen and (max-width: 1280px) {
