@@ -9,8 +9,8 @@ export function buttonSwitcher(event) {
   }
   classList.toggle('btn-remove');
   event.target.textContent = classList.contains('btn-remove')
-    ? 'remove'
-    : 'addTo';
+    ? 'Remove'
+    : 'Add to';
 
   // console.log('data-set' , dataset.card)
   const localCocktails = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
