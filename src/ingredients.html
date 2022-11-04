@@ -21,9 +21,13 @@
     <script type="module" src="./ingredients.js"></script>
   </head>
   <body>
-    <include src="./partials/header.html"></include>
-    <include src="./partials/favorite-ingredients.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/modal-ingredients.html"></include>
+    <div class="wrapper">
+      <include src="./partials/header.html"></include>
+      <main class="page">
+        <include src="./partials/favorite-ingredients.html"></include>
+      </main>
+      <include src="./partials/footer.html"></include>
+      <include src="./partials/modal-ingredients.html"></include>
+    </div>
   </body>
 </html>
