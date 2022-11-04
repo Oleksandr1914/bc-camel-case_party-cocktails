@@ -1,31 +1,5 @@
 import { buttonSwitcher } from './favourites';
 
-// export async function getCocktailName(name) {
-//   const response = await fetch(
-//     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
-//   );
-//   if (!response.ok)
-//     throw new Error(response.status);
-//   return await response.json();
-// }
-
-// export async function getCocktailLetter(letter) {
-//   const response = await fetch(
-//     `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
-//   );
-//   if (!response.ok)
-//     throw new Error(response.status);
-//   return await response.json();
-// }
-
-// export async function getIngName(ingName) {
-//   const response = await fetch(
-//     `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingName}`
-//   );
-//   if (!response.ok)
-//     throw new Error(response.status);
-//   return await response.json();
-// }
 import image from '../images/hero/desktop/group-desktop-min.png';
 import openModIngr from '../js/modal-ingredients';
 

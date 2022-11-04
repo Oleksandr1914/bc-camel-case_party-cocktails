@@ -46,8 +46,6 @@ export default function openMod(event) {
           </div>
         </div>
         `;
-        // document.querySelector('.modal-icon-close').addEventListener('click',);
-        // .insertAdjacentHTML('beforeend', string);
         document
           .querySelector('.modal__ing-all')
           .addEventListener('click', onClickCallModalIng);

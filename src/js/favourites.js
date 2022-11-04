@@ -3,7 +3,7 @@ const STORAGE_KEY = 'favorite-cocktail';
 export function buttonSwitcher(event) {
   //   console.dir(event.target);
   let { classList, dataset } = event.target;
-  console.log(dataset);
+  // console.log(dataset);
   if (!classList.contains('btn-add')) {
     return;
   }

@@ -32,6 +32,7 @@ export default function openModIngr(event) {
     .then(res => res.json())
     .then(data => {
       const dataIngr = data.ingredients[0];
+      // console.log(dataIngr);
 
       let type = dataIngr.strType;
       let alko = dataIngr.strABV;
@@ -47,10 +48,10 @@ export default function openModIngr(event) {
       }
 
       const ingredient = JSON.stringify({
-        type,
-        alko,
-        text,
         ingredient: dataIngr.strIngredient,
+        type: type,
+        alko: alko,
+        text: text,
       });
 
       const stingIng = `<div>
@@ -92,9 +93,11 @@ export default function openModIngr(event) {
 }
 
 export function buttonSwitcher(event) {
-  console.dir(event.target);
+  // console.dir(event);
   let { classList, dataset } = event.target;
-  console.log(dataset);
+  const name = event.path[1].querySelector('h1').textContent;
+  const nameTwo = event.path[1].querySelector('h2').textContent;
+  const nameP = event.path[1].querySelector('p').textContent;
   if (!classList.contains('modal-ingredients__button-add')) {
     return;
   }
@@ -105,11 +108,16 @@ export function buttonSwitcher(event) {
     ? 'remove'
     : 'Add to favorite';
 
-  console.log(dataset.ingredient);
+  // console.log(dataset.ingredient);
   const localCocktails =
     JSON.parse(localStorage.getItem(INGREDIENTS_KEY)) || [];
-  const eventCard = JSON.parse(dataset.ingredient);
-
+  // console.log(localCocktails);
+  const eventCard = {
+    name,
+    nameTwo,
+    nameP,
+  };
+  // console.log(eventCard);
   if (classList.contains('modal-ingredients__button-remove')) {
     localStorage.setItem(
       INGREDIENTS_KEY,
@@ -123,6 +131,4 @@ export function buttonSwitcher(event) {
       )
     );
   }
-  // console.log(localCocktails);
-  // console.log(eventCard);
 }
