@@ -3,6 +3,8 @@ const buttonCloseIngredients = document.querySelector(
 );
 const refBackdrop = document.querySelector('.backdrop-ingredients');
 
+const INGREDIENTS_KEY = 'Ingredients';
+
 buttonCloseIngredients.addEventListener('click', CloseModalIngredients);
 refBackdrop.addEventListener('click', onBackdropClick);
 
@@ -30,6 +32,7 @@ export default function openModIngr(event) {
     .then(res => res.json())
     .then(data => {
       const dataIngr = data.ingredients[0];
+
       let type = dataIngr.strType;
       let alko = dataIngr.strABV;
       let text = dataIngr.strDescription;
@@ -42,6 +45,13 @@ export default function openModIngr(event) {
       if (!text) {
         text = '';
       }
+
+      const ingredient = JSON.stringify({
+        type,
+        alko,
+        text,
+        ingredient: dataIngr.strIngredient,
+      });
 
       const stingIng = `<div>
           <div class="modal-ingredients__border">
@@ -66,7 +76,7 @@ export default function openModIngr(event) {
           </li>
         </ul>
 
-        <button type="submit" class="modal-ingredients__button-add">
+        <button type="submit" data-ingredient=${ingredient} class="modal-ingredients__button-add">
           Add to favorite
         </button>`;
       document
@@ -75,5 +85,44 @@ export default function openModIngr(event) {
       document
         .querySelector('.modal__close[ingredients-close]')
         .addEventListener('click', CloseModalIngredients);
+      document
+        .querySelector('.modal-ingredients__button-add')
+        .addEventListener('click', buttonSwitcher);
     });
+}
+
+export function buttonSwitcher(event) {
+  console.dir(event.target);
+  let { classList, dataset } = event.target;
+  console.log(dataset);
+  if (!classList.contains('modal-ingredients__button-add')) {
+    return;
+  }
+  classList.toggle('modal-ingredients__button-remove');
+  event.target.textContent = classList.contains(
+    'modal-ingredients__button-remove'
+  )
+    ? 'remove'
+    : 'Add to favorite';
+
+  console.log(dataset.ingredient);
+  const localCocktails =
+    JSON.parse(localStorage.getItem(INGREDIENTS_KEY)) || [];
+  const eventCard = JSON.parse(dataset.ingredient);
+
+  if (classList.contains('modal-ingredients__button-remove')) {
+    localStorage.setItem(
+      INGREDIENTS_KEY,
+      JSON.stringify([...localCocktails, eventCard])
+    );
+  } else {
+    localStorage.setItem(
+      INGREDIENTS_KEY,
+      JSON.stringify(
+        localCocktails.filter(cocktail => cocktail.id !== eventCard.id)
+      )
+    );
+  }
+  // console.log(localCocktails);
+  // console.log(eventCard);
 }
