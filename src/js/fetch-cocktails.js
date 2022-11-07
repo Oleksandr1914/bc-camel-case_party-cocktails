@@ -1,4 +1,5 @@
 import { buttonSwitcher } from './favourites';
+import { buttonSwitcherModal } from './favourites';
 
 import image from '../images/hero/desktop/group-desktop-min.png';
 import openModIngr from '../js/modal-ingredients';
@@ -212,12 +213,13 @@ function openMod(event) {
 
     const nameCocktail =
       event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
-    console.dir(event);
+    // console.dir(event);
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
     )
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         const markup = Object.keys(data.drinks[0])
           .filter(el => el.includes('strIngredient') && data.drinks[0][el])
           .map(
@@ -237,7 +239,7 @@ function openMod(event) {
             <p class="modal__text">${data.drinks[0].strInstructions}</p>
           </div>
           <div>
-            <img src=${data.drinks[0].strDrinkThumb} class="modal__img" />
+            <img src=${data.drinks[0].strDrinkThumb} class="modal__img" alt=${data.drinks[0].strDrink}/>
           </div>
 
           <div class="modal__block-ing">
@@ -261,6 +263,9 @@ function openMod(event) {
         document
           .querySelector('.modal-icon-close')
           .addEventListener('click', CloseModalCocktails);
+        document
+          .querySelector('.modal__button-add')
+          .addEventListener('click', buttonSwitcherModal);
       });
 
     ref.hidden.addEventListener('click', onClickBackdrop);

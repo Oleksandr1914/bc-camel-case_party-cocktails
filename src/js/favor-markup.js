@@ -14,7 +14,7 @@ export default function renderFavCard() {
                       cocktail.src
                     } alt= ${cocktail.alt.replaceAll('_', ' ')} />
                     </div>
-                    <p class="cocktail-info" data-cocktailID=${cocktail.id}>
+                    <p class="cocktail-info" >
                         ${cocktail.text.replaceAll('_', ' ')}</p>
                     <div class="button-wrapper">
                     <button class="btn-lm" type="button">Learn more</button>

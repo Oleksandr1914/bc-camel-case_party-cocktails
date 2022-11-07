@@ -1,13 +1,14 @@
 import openModIngr from './modal-ingredients';
 import renderFavCard from './favor-markup';
 import svg from '../images/icons/sprite.svg';
-console.dir(svg);
+// console.dir(svg);
 export default function openMod(event) {
   if (event.target.textContent == 'Learn more') {
     document.querySelector('.backdrop').classList.remove('is-hidden');
     document.body.classList.toggle('_lock');
-    const nameCocktail =
-      event.path[2].childNodes[3].attributes[1].ownerElement.innerText;
+    const nameCocktail = event.path[2].querySelector('p').textContent.trim();
+    // console.dir(nameCocktail);
+    // childNodes[3].attributes[1].ownerElement.innerText;
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameCocktail}`
     )
